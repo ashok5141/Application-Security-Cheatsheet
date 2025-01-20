@@ -72,7 +72,7 @@ SELECT a, b FROM table1 UNION SELECT c, d FROM table2
     - How many columns are being returned from the original query.
     - Which columns returned from the original query are of a suitable data type to hold the results from the injected query.
 
-#### Determining the number of columns required
+##### Determining the number of columns required
 - When trying the SQL ```UNION``` injection their are 2 ways
 - One method
     - ' ORDER BY 1--
@@ -91,3 +91,43 @@ etc.
 ' UNION SELECT NULL,NULL,NULL--
 etc.
 ```
+- When using the ```ORDER BY``` technique, the application may return a database error, a generic error, or no results. If the number of nulls matches the columns, the database adds a row with null values. This may result in extra content in the response, such as an additional row in an HTML table. Alternatively, it could trigger errors like ```NullPointerException```, or the response may appear unchanged, rendering this method ineffective.
+
+##### Database-specific syntax ORACLE DB
+- On Oracle, every ```SELECT``` query must use the ```FROM``` keyword and specify a valid table. There is a build-in table on Oracle called ```dual``` which can used for this purpose. So the injected queries on Oracle would need to look like:
+```bash
+' UNION SELECT null FROM DUAL--
+```
+
+##### Finding columns with a useful data type
+- First, determine the number of columns then
+- Second, Then find which columns hold the ```string``` by changing the values
+```bash
+' UNION SELECT 'a',NULL,NULL,NULL--
+' UNION SELECT NULL,'a',NULL,NULL--
+' UNION SELECT NULL,NULL,'a',NULL--
+' UNION SELECT NULL,NULL,NULL,'a'--
+```
+
+##### Using a SQL injection UNION attack to retrieve interesting data
+- when you have determined the number of columns returned by the original query and found which columns can hold string data, you are in a position to retrieve interesting data.
+- Suppose that:
+    - The original query returns two columns, both of which can hold string data.
+    - The injection point is a quoted string within the WHERE clause.
+    - The database contains a table called users with the columns username and password.
+- In this example, you can retrieve the contents of the ```users``` table by submitting the input:
+```bash
+' UNION SELECT username, password FROM users--
+```
+##### Retrieving multiple values within a single column
+- You can retrieve multiple values together within this single column by concatenating the values together. You can include a separator to let you distinguish the combined values. For example, on Oracle you could submit the input:
+```bash
+' UNION SELECT username || '~' || password FROM users--
+# Results may like: administrator~s3cure
+```
+
+## Blind SQL injection
+- Blind SQL injection occurs when an application is vulnerable to SQL injection, but its HTTP responses do not contain the results of the relevant SQL query or the details of any database errors
+- Many techniques such as ```UNION``` attacks are not effective with blind SQL injection vulnerabilities. This is because they rely on being able to see the results of the injected query within the application's responses. It is still possible to exploit blind SQL injection to access unauthorized data, but different techniques must be used.
+
+##### Exploiting blind SQL injection by triggering conditional responses
