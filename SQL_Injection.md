@@ -2,6 +2,8 @@
 - Labs from portswigger labs
 ## SQL Database
 > Here are commands to find MySQL, Microsoft SQL server [Cheatsheet](https://portswigger.net/web-security/sql-injection/cheat-sheet).
+
+![SQL Database Structure](https://github.com/ashok5141/Application-Security-Cheatsheet/blob/main/Images/SQL_db.png)
 - Identifying number of columns available in SQL database to craft the union select command 
 ```bash
 # Pets is the parameter in the URL 
@@ -28,6 +30,8 @@ Pets'union select username_pxqwui ||'~'|| password_bfvoxs, null from users_xacgs
 
 ## ORACLE Database
 > Here are commands to find ORACLE DB [Cheatsheet](https://portswigger.net/web-security/sql-injection/cheat-sheet).
+
+![Oracle Database Structure](https://github.com/ashok5141/Application-Security-Cheatsheet/blob/main/Images/Oracle_db.png)
 - Identifying number of columns available in Oracle database to craft the union select command 
 ```bash
 # Pets is the parameter in the URL 
