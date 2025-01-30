@@ -262,6 +262,4 @@ We can't decide whether particular user available or not
 Some thing like this password  wjuc497wl6szhbtf0cbf
 script here - https://github.com/ashok5141/Application-Security-Cheatsheet/blob/main/Scripts/SQL_Oracle_Blind_Password_Retrive.py 
 script.py <url>
-Github commands check
-add commit push
 ```
