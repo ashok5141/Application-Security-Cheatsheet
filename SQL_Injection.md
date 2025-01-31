@@ -304,5 +304,6 @@ Cookie: TrackingId='+AND+1%3dCAST((SELECT+password+from+users+LIMIT+1)+as+int)--
 ```
 - Lab Commands:
 ```bash
+# First check all the time delays with different DB types
 
 ```
