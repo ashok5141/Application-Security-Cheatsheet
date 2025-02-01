@@ -13,10 +13,10 @@
 | NoSQL Injection | N/A | Attacks **NoSQL databases (MongoDB, CouchDB)** using JSON or JavaScript-based injections.
 
 - Procees
-    - In-Band SQL Injection is easier to detect since attackers get direct feedback.
-    - Out-of-Band SQL Injection is harder to detect but works when direct responses are blocked.
-    - Blind SQL Injection is time-consuming but still effective if error messages are suppressed.
-    - Use WAFs, Parameterized Queries, and Security Testing to prevent SQL injection!
+    - **In-Band SQL Injection** is **easier to detect** since attackers get **direct feedback**.
+    - **Out-of-Band SQL Injection** is **harder to detect** but works when **direct responses are blocked**.
+    - **Blind SQL Injection** is **time-consuming** but still effective if error messages are suppressed.
+    - **Use WAFs, Parameterized Queries, and Security Testing** to prevent SQL injection!
 
 ## SQL Database
 > Here are commands to find MySQL, Microsoft SQL server [Cheatsheet](https://portswigger.net/web-security/sql-injection/cheat-sheet).
