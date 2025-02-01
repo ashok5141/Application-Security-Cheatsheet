@@ -355,5 +355,38 @@ Cookie: TrackingId='+AND+1%3dCAST((SELECT+password+from+users+LIMIT+1)+as+int)--
     - First capture the request find the vulnerable parameter.
     - Start burp collabrator then, craft the payload the according the website and Database type
     - check the burp collabrator's **DNS** response like below image.
-    
+
 ![Burp Collabrator Password](Images/SQL_OOB_Collabrator_DNS_Password.png)
+
+### How to prevent blind SQL injection attacks?
+- These parameterized queries are also know as "prepared statements".
+- The following code is vulnerable to SQL injection because the user input is concatenated directly into the query:
+```bash
+String query = "SELECT * FROM products WHERE category = '"+ input + "'";
+Statement statement = connection.createStatement();
+ResultSet resultSet = statement.executeQuery(query);
+```
+- You can rewrite this code in a way that prevents the user input from interfering with the query structure:
+```bash
+PreparedStatement statement = connection.prepareStatement("SELECT * FROM products WHERE category = ?");
+statement.setString(1, input);
+ResultSet resultSet = statement.executeQuery();
+```
+- You can use parameterized queries for any situation where untrusted input appears as data within the query, including the `WHERE` clause and values in an `INSERT` or `UPDATE` statement. They can't be used to handle untrusted input in other parts of the query, such as table or column names, or the `ORDER BY` clause. Application functionality that places untrusted data into these parts of the query needs to take a different approach, such as:
+    - Whitelisting permitted input values.
+    - Using different logic to deliver the required behavior.
+
+
+- Parameterized Queries for Secure Input Handling
+    - Definition: Parameterized queries ensure that user input is treated as data, not executable code.
+    - Usage: They can be used only where untrusted input appears as data—such as:
+        - `WHERE` clauses
+        - Values in `INSERT` or `UPDATE` statements
+    - Limitation: They cannot be used to handle untrusted input in other parts of the query, like:
+        - Table or column names
+        - `ORDER BY` clauses
+- Key Takeaways
+    - Parameterized queries prevent SQL injection when used correctly.
+    - They work for WHERE, INSERT, and UPDATE clauses but not dynamic table/column names.
+    - For dynamic queries, use whitelisting or different logic to ensure safety.
+    - Never assume certain inputs are safe—always use secure coding practices. 🚀
