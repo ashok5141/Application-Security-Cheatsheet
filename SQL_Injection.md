@@ -1,5 +1,23 @@
 # SQL Injection Cheatsheets
 - Labs from portswigger labs
+
+| Type | Sub-Type | Definition |
+|:-|:-|:-|
+|In-Band SQL Injection | Error-Based | Extracts data via **database error messages**.|
+| | Union-Based |Uses the `UNION` operator to retrieve **additional data**. |
+|Blind SQL Injection | Boolean-Based | Sends queries that return **True/False** responses. |
+| | Time-Based | Uses **delays** (`SLEEP()`, `WAITFOR DELAY`) to infer database responses.|
+|Out-of-Band SQL Injection | DNS Exfiltration | Sends **DNS requests** to an attacker-controlled server. |
+| | HTTP Exfiltration | Sends **HTTP requests** with extracted data. |
+| Second-Order SQL Injection |N/A | The payload is stored and **executed later**, affecting another SQL query. |
+| NoSQL Injection | N/A | Attacks **NoSQL databases (MongoDB, CouchDB)** using JSON or JavaScript-based injections.
+
+- Procees
+    - In-Band SQL Injection is easier to detect since attackers get direct feedback.
+    - Out-of-Band SQL Injection is harder to detect but works when direct responses are blocked.
+    - Blind SQL Injection is time-consuming but still effective if error messages are suppressed.
+    - Use WAFs, Parameterized Queries, and Security Testing to prevent SQL injection!
+
 ## SQL Database
 > Here are commands to find MySQL, Microsoft SQL server [Cheatsheet](https://portswigger.net/web-security/sql-injection/cheat-sheet).
 
@@ -322,3 +340,8 @@ Cookie: TrackingId='+AND+1%3dCAST((SELECT+password+from+users+LIMIT+1)+as+int)--
     - Payload 2 show actual password of password character length number from payload
 
 ![BurpSuite Intruder Password](Images/Burp_Intruder_password.png)
+
+##### Exploiting blind SQL injection using out of band (OAST) techniques
+> OAST -> Out of band Application Security Testing 
+- Blind SQL injection is a type of SQL injection where an attacker exploits a vulnerability but does **not receive direct feedback** from the database in the form of error messages or visible data. Instead, they infer the database's response through **delays, conditional response or external interactions**.
+- Out-of-Band (OOB)SQL Injection a special type of blind SQL Injection that relies on **external communication** (such as DNS or HTTP requests) to **extract data** from the database when in-band methods (like using messages or timing delays) are not available.
