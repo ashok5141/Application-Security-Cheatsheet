@@ -405,8 +405,8 @@ ResultSet resultSet = statement.executeQuery();
 #### NoSQL database models
 - There is a wide verity of NoSQL databases. In order to detect vulnerabilities in a No SQL database, it helps to inderstand the model framework and language:
     - Some coomon types of NoSQL databases include:
-        - **Document Stores** - These store data in flexible, semi-structured documents. They typically use formats such as JSON, BSON, and XML, and are queried in an API or query language. Examples include MongoDB and Couchbase.
-        - **Key-valus stores** - These store data in a key-value format. Each data field is associated with a unique key string. Values are retrieved based on the unique key. Examples include Redis and Amazon DynamoDB.
-        - **Wide-column stores** - These organize related data into flexible column families rather than traditional rows. Examples include Apache Cassandra and Apache HBase.
-        - **Graph database** - These use nodes to store data entities, and edges to store relationships between entities. Examples include Neo4j and Amazon Neptune.
+        - **Document Stores** - These store data in **flexible, semi-structured documents**. They typically use formats such as **JSON, BSON, and XML**, and are queried in an API or query language. Examples include **MongoDB** and **Couchbase**.
+        - **Key-valus stores** - These store data in a **key-value format**. Each data field is associated with a **unique key string. Values are retrieved based on the unique key**. Examples include **Redis** and **Amazon DynamoDB**.
+        - **Wide-column stores** - These organize related data into **flexible column** families rather than traditional rows. Examples include **Apache Cassandra** and **Apache HBase**.
+        - **Graph database** - These use nodes to store **data entities, and edges to store** relationships between entities. Examples include **Neo4j** and **Amazon Neptune**.
  
