@@ -390,3 +390,23 @@ ResultSet resultSet = statement.executeQuery();
     - They work for WHERE, INSERT, and UPDATE clauses but not dynamic table/column names.
     - For dynamic queries, use whitelisting or different logic to ensure safety.
     - Never assume certain inputs are safe—always use secure coding practices. 🚀
+
+
+# NoSQL Ijection
+- NoSQL injection is a vulnerability where an attacker is able to interfere with the queries that an application makes to a NoSQL database. NoSQL injection may enable an attacker to:
+    - Bypass authentication or protection mechanisms.
+    - Extract or edit data.
+    - Cause a denial of service.
+    - Execute code on the server.
+
+- NoSQL databases store and retrive data in a format other then traditional SQL relational tables. They use a wide range of query languages instead of a universal standard like SQL, and have fewer relational constraints.
+    - Uses custom query language or a common language like XML or JSOM.
+
+#### NoSQL database models
+- There is a wide verity of NoSQL databases. In order to detect vulnerabilities in a No SQL database, it helps to inderstand the model framework and language:
+    - Some coomon types of NoSQL databases include:
+        - **Document Stores** - These store data in flexible, semi-structured documents. They typically use formats such as JSON, BSON, and XML, and are queried in an API or query language. Examples include MongoDB and Couchbase.
+        - **Key-valus stores** - These store data in a key-value format. Each data field is associated with a unique key string. Values are retrieved based on the unique key. Examples include Redis and Amazon DynamoDB.
+        - **Wide-column stores** - These organize related data into flexible column families rather than traditional rows. Examples include Apache Cassandra and Apache HBase.
+        - **Graph database** - These use nodes to store data entities, and edges to store relationships between entities. Examples include Neo4j and Amazon Neptune.
+ 
