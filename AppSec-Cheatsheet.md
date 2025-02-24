@@ -402,6 +402,12 @@ ResultSet resultSet = statement.executeQuery();
 - NoSQL databases store and retrive data in a format other then traditional SQL relational tables. They use a wide range of query languages instead of a universal standard like SQL, and have fewer relational constraints.
     - Uses custom query language or a common language like XML or JSOM.
 
+#### Types of NoSQL Injection 
+- There are 2 different types of NoSQL injection:
+    - **Syntax injection** - It will similar to the traditional SQL Injection first break the SQL SYNTAX, the but here is NoSQL statements databases use a range of query languages, types of query syntax and different data structures.
+    - **Operator Injection** - It occures when you can use NoSQL query operators to manipulate queries.
+
+
 #### NoSQL database models
 - There is a wide verity of NoSQL databases. In order to detect vulnerabilities in a No SQL database, it helps to inderstand the model framework and language:
     - Some coomon types of NoSQL databases include:
@@ -410,3 +416,6 @@ ResultSet resultSet = statement.executeQuery();
         - **Wide-column stores** - These organize related data into **flexible column** families rather than traditional rows. Examples include **Apache Cassandra** and **Apache HBase**.
         - **Graph database** - These use nodes to store **data entities, and edges to store** relationships between entities. Examples include **Neo4j** and **Amazon Neptune**.
  
+
+## NoSQL syntax Injection
+- 
