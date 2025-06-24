@@ -12,7 +12,7 @@
 # Interview Question
 - RSM Senior Associate - Penetration Tester
 - Active Directory Certificate Services (AD CS) Penetration Testing
-- PetitPotam AD penetration testing scenario enterprise level
+- PetitPotam AD penetration testing scenario, enterprise level
 - Blind SQL injection, How to retrieve the database information using Blind SQL injection
 - GraphQL vulnerability, common vulnerabilities, Interoception tools
 - JSON Web Token (JWT) common vulnerabilities
@@ -29,6 +29,25 @@
 - How to start Thick client penetration testing, What are the vulnerabilities you look for
 - How to start Mobile Penetration testing, What are the vulnerabilities you look for
 - If you see the Banner or server information, what will the attacker do
-- What are the 5 vulnerabilities found in the recent project and Mitigations you provided
+- What are the 5 vulnerabilities found in the recent project, and the Mitigations you provided
 - SQL Injections
-- How you test the AI applications
+- How do you test the AI applications
+
+> Trintech (Application Security Engineer)
+- 
+
+
+
+
+ 
+> Credit One Bank
+- CIA Triad
+- How to find the integrity of the file
+- Difference between Symmetric and Asymmetric
+- OSI Model, how it's relevant to a security engineer
+- Credential Stuffing (Password brute-forcing)
+- Pass-the-Hash Attack: How to Mitigate This Attack
+- Man-in-the-middle Attack
+- WAF, AWS WAF, What are WAFs used AWS WAF and Fortinet Firewall
+- Mitre ATT&CK TTP's 
+- Why are you interested in the role of Security Engineer II
