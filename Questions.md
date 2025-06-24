@@ -11,11 +11,24 @@
 
 # Interview Question
 - RSM Senior Associate - Penetration Tester
-- Active Directory Certificate Services (AD CS) Penetration testing
-- PetitPotam AD penetesting scnario enterprise level
+- Active Directory Certificate Services (AD CS) Penetration Testing
+- PetitPotam AD penetration testing scenario enterprise level
 - Blind SQL injection, How to retrieve the database information using Blind SQL injection
-- GraphQL vulnerability, common vulnerabilities Interoception tools
+- GraphQL vulnerability, common vulnerabilities, Interoception tools
 - JSON Web Token (JWT) common vulnerabilities
 - Reflected XSS, DOM Difference
-- Browser's Same origin policy, CORS difference
-- SQL Injection code samples, images 
+- Browser's Same Origin Policy, CORS difference
+- SQL Injection code samples, images
+
+> TCS
+- How to start the Network, Application Penetration Testing
+- Second-order SQL Injection
+- Types of XSS
+- How to find SQL Injection in the Login page
+- Types of Black, Gray and white box penetration testing
+- How to start Thick client penetration testing, What are the vulnerabilities you look for
+- How to start Mobile Penetration testing, What are the vulnerabilities you look for
+- If you see the Banner or server information, what will the attacker do
+- What are the 5 vulnerabilities found in the recent project and Mitigations you provided
+- SQL Injections
+- How you test the AI applications
