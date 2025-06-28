@@ -21,7 +21,7 @@
 - SQL Injection code samples, images
 
 > TCS
-- How to start the Network, Application Penetration Testing
+- How to start the Network, Application Penetration Testing (1 st round)
 - Second-order SQL Injection
 - Types of XSS
 - How to find SQL Injection in the Login page
@@ -31,7 +31,13 @@
 - If you see the Banner or server information, what will the attacker do
 - What are the 5 vulnerabilities found in the recent project, and the Mitigations you provided
 - SQL Injections
-- How do you test the AI applications
+- How do you test the AI applications (2 nd round)
+    - API security Common vulnerabilities
+    - IN API security, What is API rate limiting and how to identify that.
+    - IN API security, What is API mass assessment, and how to identify that,what is the error code.
+    - IN API security, If the API normally accepts 3 parameters and provides the output, What if you provide 5 input and what is the response and what is the error code.
+    - Do have skills in managing onshore and offshore teams
+    - Handling the client and maintain a relationship with the client
 
 > Trintech (Application Security Engineer)
 - 
