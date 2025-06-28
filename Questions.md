@@ -37,7 +37,9 @@
     - IN API security, What is API mass assessment, and how to identify that,what is the error code.
     - IN API security, If the API normally accepts 3 parameters and provides the output, What if you provide 5 input and what is the response and what is the error code.
     - Do have skills in managing onshore and offshore teams
-    - Handling the client and maintain a relationship with the client
+    - Handling the client and maintaining a relationship with the client
+    - Have done the citrix applications penetration testing
+    - Have done the Wordpress application penetration testing (Plugins exploits using wpscan, admin URL, User posts in wordpress)
 
 > Trintech (Application Security Engineer)
 - 
