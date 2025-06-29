@@ -418,4 +418,4 @@ ResultSet resultSet = statement.executeQuery();
  
 
 ## NoSQL syntax Injection
-- 
+- You can potentially detect NoSQL injection vulnerabilities by attempting to break the query syntax
