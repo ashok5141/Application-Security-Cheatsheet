@@ -250,28 +250,54 @@ Rate limiting (e.g., 5 login attempts/hour).
 - Scan artifacts in CI/CD.
     - Integrate security scanning tools (e.g., SCA tools, static analysis tools) into your CI/CD pipeline to automatically scan build artifacts for vulnerabilities.
 
-## A9 - 
-- **Core Concept** 
-- Process:
-    - 
+## A9 - Security Logging and Monitoring Failures
+- **Core Concept** Application doesn't detect or record security-relevant events, allowing undetected attacks.
+- Process: 
+- Review logging, test alerts, simulate attacks.
+    - Delete logs(Attacker might delete who got the access to the logs) to cover tracks (`rm /var/log/auth.log`).
+    - Exfiltrate data slowly to avoid alerts.
    
+| Type | Description |
+|------|------|
+| Missing Audits | No logs for logins/data access |
+| Centralization Failures| Logs not aggregated in SIEM |
+| Insecure log Storage | No security for logs |
+#### Finding - Security Logging and Monitoring Failures
+- Verify if failed logins appear in monitoring.
+- Test log deletion resistance.
+    - Attempt to tamper with or delete logs, both locally on application servers and within your centralized logging system. Ensure that logs are either immutable or that deletion attempts are themselves logged and alerted upon.
+   - **How to find**: Log review, SIEM gap analysis.
+#### Mitigations - Security Logging and Monitoring Failures
+- Centralize logs to SIEM (Splunk, ELK).
+    - Instead of having logs scattered across individual application servers, you aggregate them into a centralized system like a SIEM (e.g., Splunk, Elastic Stack - ELK).
+- Set alerts for 10+ failed logins/min.
+    - Configure the SIEM or monitoring system to trigger an alert when a suspicious pattern of events is detected, such as multiple failed login attempts within a short timeframe.
+- Use immutable logs (AWS CloudTrail).
+    - Immutable logs prevent modification or deletion, ensuring the integrity of the audit trail. Services like AWS CloudTrail automatically record API activity within your AWS account and deliver those logs to a secure, tamper-proof location (like an S3 bucket with versioning and MFA delete enabled).
 
-#### Finding - 
-   - **How to find**: 
+## A10 - Server-Side Request Forgery (SSRF)
+- **Core Concept** App fetches remote resources based on user input without validation, Enabling requests to internal services, Forcing servers to fetch internal resources.
+- Process:Find user-controlled URLs, test internal IPs (e.g., Cloud 169.254.169.254, Local 127.0.0.1)
+    - Inject internal URLs into APIs (e.g., `?url=http://169.254.169.254`).
+    - Fetch cloud metadata/AWS keys.
 
-#### Mitigations - 
-
-## A10 - 
-- **Core Concept** 
-- Process:
-    - 
-   
-
-#### Finding - 
-   - **How to find**: 
-
-#### Mitigations - 
-
+| Type | Description |
+|-------|----------------|
+| Basic SSRF | Read internal files/ports |
+| Blind SSRF | Trigger out-of-band requests (DNS/HTTP) |
+#### Finding - Server-Side Request Forgery (SSRF)
+- Fuzz URL parameters with internal IPs.
+    - Test the application's URL parameters by providing internal IP addresses (e.g., 127.0.0.1, 192.168.1.1) as values. Observe if the server attempts to access these internal resources.
+- Monitor DNS callbacks (Burp Collaborator).
+    - Utilize tools like Burp Collaborator to monitor if your application is making unexpected DNS requests to the Collaborator server when you provide certain inputs in URL parameters. This can indicate that the server is attempting to resolve and access the provided domains.
+   - **How to find**: Manual testing (Burp Suite), fuzz URLs.
+#### Mitigations - Server-Side Request Forgery (SSRF)
+- Allowlist public domains.
+    - Instead of allowing the application to make requests to any arbitrary domain, you maintain a predefined list of trusted public domains that the application is allowed to access. Any requests to domains outside this allowlist are blocked.
+- Block internal IPs at WAF.
+    - Configure your Web Application Firewall (WAF) to inspect outgoing requests from your application and block any requests that attempt to access internal IP addresses (e.g., 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16, 127.0.0.1).
+- Sanitize inputs with regex.
+    - Use regular expressions (regex) to sanitize and validate user input, ensuring that it conforms to expected formats and does not contain malicious characters or patterns.
 
 
 
@@ -288,10 +314,8 @@ Rate limiting (e.g., 5 login attempts/hour).
 - Process:
     - 
    
-
 #### Finding - 
    - **How to find**: 
-
 #### Mitigations - 
 
 # OWASP Top 10 - Mobile
@@ -300,9 +324,7 @@ Rate limiting (e.g., 5 login attempts/hour).
 - **Core Concept** 
 - Process:
     - 
-   
 
 #### Finding - 
    - **How to find**: 
-
 #### Mitigations - 
