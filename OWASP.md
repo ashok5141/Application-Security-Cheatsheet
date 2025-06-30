@@ -1,4 +1,4 @@
-# OWASP Top 10 : 2021
+# OWASP Top 10 : 2021 Web Application
 
 | Vuln                   | Process                     | Tools                        | Mitigation                         |
 | ---------------------- | --------------------------- | ---------------------------- | ---------------------------------- |
@@ -307,7 +307,7 @@ Rate limiting (e.g., 5 login attempts/hour).
 
 
 
-# OWASP Top 10 - API 
+# OWASP Top 10 - APIs
 
 ## A - 
 - **Core Concept** 
@@ -318,7 +318,7 @@ Rate limiting (e.g., 5 login attempts/hour).
    - **How to find**: 
 #### Mitigations - 
 
-# OWASP Top 10 - Mobile
+# OWASP Top 10 - Mobile Application
 
 ## A - 
 - **Core Concept** 
