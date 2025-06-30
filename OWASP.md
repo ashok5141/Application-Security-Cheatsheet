@@ -129,7 +129,7 @@
     - Bypass multi-step processes (e.g., skipping OTP verification).
 
 | Type | Description |
-|------------------------|--------------------------------------------------|
+|-------------|-----------------------|
 | Race Conditions | Exploiting parallel processing (e.g., double-spending) |
 | Missing Rate Limits| Brute-forcing passwords/OTPs |
 #### Finding - Insecure Design
@@ -143,16 +143,30 @@
 - Idempotency (denoting an element of a set which is unchanged) tokens for transactions.
 Rate limiting (e.g., 5 login attempts/hour).
 
-## A5 - 
-- **Core Concept** 
+## A5 - Security Misconfiguration
+- **Core Concept** Unsecured defaults exposing systems.
 - Process:
-    - 
+    - Access admin interfaces at default paths (`/admin`)
+    - Exploit verbose errors leaking stack traces.
+
+| Type | Description |
+|---------|------------------|
+| Default Credentials | `admin/admin` for admin consoles |
+| Unpatched Systems | Unupdated Apache/WordPress |
+| Overly Permissive CORS | Allowing `*` origins |
    
-
-#### Finding - 
-   - **How to find**: 
-
-#### Mitigations -  
+#### Finding - Security Misconfiguration
+- Scan with OWASP ZAP/Nessus.
+- Check `/robots.txt`, `/.env`, `phpinfo.php`
+   - **How to find**: Tools: Nmap, Nessus, ScoutSuite (for cloud), manual review.
+#### Mitigations -  Security Misconfiguration
+- Automate hardening (CIS Benchmarks).
+    - CIS Benchmarks are secure configuration recommendations for hardening various technologies, including operating systems, databases, and network devices.
+- Disable directory listing and debug mode.
+    - Disabling directory listing prevents attackers from browsing directory structures and potentially accessing sensitive files. (Nginx autoindex off).
+    - Disabling debug mode in production environments prevents sensitive information (e.g., stack traces, detailed error messages) from being displayed to users, which can reveal underlying system flaws or component versions.(app.config['DEBUG'] = False)
+- Use minimal CORS policies.
+    - Configure your web server or application framework to set the `Access-Control-Allow/Origin, Headers` header with the specific allowed origins.
 
 ## A6 - 
 - **Core Concept** 
