@@ -222,17 +222,33 @@ Rate limiting (e.g., 5 login attempts/hour).
     -The `Secure` flag ensures that the cookie is only sent over secure HTTPS connections. This protects the cookie from being intercepted by attackers over unencrypted HTTP connections.
 - Implement account lockouts.
 
-## A8 - 
-- **Core Concept** 
+## A8 - Software and Data Integrity Failures
+- **Core Concept** Failing to verify integrity of code or data allows attackers to temper updates or artifacts.
 - Process:
-    - 
+- Check CI/CD pipelines, look for unsigned updates.
+    - Upload malicious files (e.g., `shell.jpg.php`).
+    - Compromise CI/CD to inject backdoors.
    
-
-#### Finding - 
-   - **How to find**: 
-
-#### Mitigations -  
-
+| Type | Description |
+|--------|--------|
+| Insecure Deserialization| RCE via pickled objects (Python) or Java serialization |
+| CI/CD Attacks | Malicious code merges via compromised pipelines |
+| Unsigned updates | software updates that are not digitally signed. |
+| Lack of integrity checks | Notchecking the `MD5` or `SHA-256` values not checking from autorised sources. |
+#### Finding - Software and Data Integrity Failures
+- Test file uploads for double extensions.
+    - Attackers may attempt to bypass file upload restrictions by using double extensions, such as `image.jpg.php`. If the application only validates the last extension, it might misinterpret the file as an image while allowing the embedded PHP code to be executed.
+- Audit CI/CD scripts for signature checks.
+    - Insecure Continuous Integration/Continuous Deployment (CI/CD) pipelines can be exploited by attackers to inject malicious code or artifacts into the build and deployment processes.
+   - **How to find**: Code review, testing update flows. analyze serialization.
+#### Mitigations - Software and Data Integrity Failures
+- Validate digital signatures (GPG, Sigstore).
+    - Digital signatures provide cryptographic assurance of the authenticity and integrity of software and data.
+    - GPG (GNU Privacy Guard) is a widely used tool for generating and verifying digital signatures.
+- Use schema validation for serialized data.
+    - Schema validation ensures that serialized data conforms to a predefined structure or format, preventing attackers from injecting unexpected or malicious data.
+- Scan artifacts in CI/CD.
+    - Integrate security scanning tools (e.g., SCA tools, static analysis tools) into your CI/CD pipeline to automatically scan build artifacts for vulnerabilities.
 
 ## A9 - 
 - **Core Concept** 
