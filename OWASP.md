@@ -120,17 +120,28 @@
 - Output encoding for XSS.
     - Output encoding transforms potentially harmful characters in user-supplied or untrusted data into a safe format before displaying it on a web page. This prevents the browser from interpreting the data as executable code (like JavaScript) and mitigates the risk of XSS attacks.
 
-## A4 - 
-- **Core Concept** 
-- Process:
-    - 
-   
+## A4 - Insecure Design
+> Insecure Design is a critical category in the OWASP Top 10 that focuses on inherent flaws in the architecture and design of a web application, rather than just implementation errors. These flaws can create vulnerabilities that cannot be fully mitigated by simply fixing code. Addressing Insecure Design requires a proactive approach from the outset of the development process.
+- **Core Concept** Architectural flaws enabling business logic bypass.
+- Application is insecure by design – security was never included during architecture or requirements phase.
+- Process: 
+    - Exploit flawed workflows (e.g., replaying payment requests).
+    - Bypass multi-step processes (e.g., skipping OTP verification).
 
-#### Finding - 
-   - **How to find**: 
-
-#### Mitigations -  
-
+| Type | Description |
+|------------------------|--------------------------------------------------|
+| Race Conditions | Exploiting parallel processing (e.g., double-spending) |
+| Missing Rate Limits| Brute-forcing passwords/OTPs |
+#### Finding - Insecure Design
+- Audit workflows for "trust assumptions".
+    - Trust Assumptions: Insecure Design often arises from implicit or incorrect trust assumptions about users, data, or external systems. For example, assuming that all user input is safe or that external services are always reliable can lead to vulnerabilities.
+- Test with automated tools (Burp Intruder).
+    - Auditing: Conduct a thorough audit of your application's workflows to identify any trust assumptions. Analyze how data flows through the system and identify points where the application implicitly trusts external input or services without sufficient validation or security controls.
+   - **How to find**: Threat modeling workshops; design reviews; attack scenarios.
+#### Mitigations - Insecure Design  
+- Threat modeling during design (STRIDE)
+- Idempotency (denoting an element of a set which is unchanged) tokens for transactions.
+Rate limiting (e.g., 5 login attempts/hour).
 
 ## A5 - 
 - **Core Concept** 
