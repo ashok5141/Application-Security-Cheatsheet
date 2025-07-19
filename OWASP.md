@@ -90,6 +90,8 @@
 | **Out-of-Band SQLi**  | Exfiltrates data via DNS/HTTP requests.                                    | Use tools like `Burp Collaborator` with `LOAD_FILE()` or `xp_dirtree`.          | Block outbound DB connections; sanitize inputs.                            |
 
 ### Cross-Site Scripting (XSS)
+- **DOM-based XSS** occurs when JavaScript on the client side takes untrusted user input (like from the URL) and writes it directly into the DOM without proper sanitization. This allows attackers to inject and execute malicious scripts in the browser.
+
 | Subtype               | Definition                                                                 | Detection Method                                                                 | Mitigation                                                                 |
 |-----------------------|---------------------------------------------------------------------------|---------------------------------------------------------------------------------|----------------------------------------------------------------------------|
 | **Stored XSS**        | Malicious script stored on server (e.g., in comments).                     | Submit `<script>alert(1)</script>` in input fields; check persistence.          | Use **output encoding** (HTML Entity Encoding).                            |
