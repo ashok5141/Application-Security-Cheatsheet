@@ -7,6 +7,8 @@
 6. [Medium](https://medium.com/@kaushikepari4/top-60-interview-preparation-question-for-application-security-2024-004c9e818c86)
 7. [LinkedIn](https://www.linkedin.com/pulse/top-20-web-application-security-interview-questions-answers-crawsec/)
 8. [Github](https://github.com/jassics/security-interview-questions/blob/main/application-security-interview-questions.md)
+9. [Threat Modeling](https://interview.rajanagori.in/threatmodel/)
+10. [AppSec Q/A](https://interview.rajanagori.in/interview/)
 
 
 # Interview Question
