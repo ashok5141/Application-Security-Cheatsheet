@@ -231,7 +231,7 @@ Good luck Ashok! You have a strong foundation — focus on stakeholder scenarios
     - A penetration test, on the other hand, goes a step further by actively attempting to exploit identified vulnerabilities to determine their real-world impact. Penetration testing simulates an attacker’s actions to assess the effectiveness of security measures and identify weaknesses that may not be apparent in a vulnerability assessment. While vulnerability assessments focus on breadth, penetration tests focus on depth.
 
 - **How do you stay updated with the latest vulnerabilities and threats?**
-    - Subscribing to Security Bulletins: Receiving updates from vendors, security organizations, and government agencies.
-    - Participating in Security Communities: Engaging with online forums, security conferences, and professional networks.
-    - Using Threat Intelligence Feeds: Leveraging commercial or open-source threat intelligence services.
-    - Continuous Learning: Taking courses, certifications, and attending webinars to stay informed about the latest trends and technologies.
+    - **Subscribing to Security Bulletins**: Receiving updates from vendors, security organizations, and government agencies.
+    - **Participating in Security Communities**: Engaging with online forums, security conferences, and professional networks.
+    - **Using Threat Intelligence Feeds**: Leveraging commercial or open-source threat intelligence services.
+    - **Continuous Learning**: Taking courses, certifications, and attending webinars to stay informed about the latest trends and technologies.
