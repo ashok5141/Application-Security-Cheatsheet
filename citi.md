@@ -235,3 +235,18 @@ Good luck Ashok! You have a strong foundation — focus on stakeholder scenarios
     - **Participating in Security Communities**: Engaging with online forums, security conferences, and professional networks.
     - **Using Threat Intelligence Feeds**: Leveraging commercial or open-source threat intelligence services.
     - **Continuous Learning**: Taking courses, certifications, and attending webinars to stay informed about the latest trends and technologies.
+
+- ****
+
+##### Citi-specific questions
+- **8. What interests you specifically about this External Vendor Vulnerability Assessments Lead role at Citi?**
+    - **Situation**: Career has been focused on cybersecurity, with a particular emphasis on vulnerability management and securing third-party relationships, where extensive experience in identifying, assessing, and mitigating risks was gained.
+    - **Task**: Actively seeking a leadership role where skills and experience can be applied to a larger, more complex environment, contributing to the security of a globally recognized financial institution.
+    - **Action**: Citi's strong commitment to cybersecurity and its proactive approach to vendor risk management was followed, which aligns with professional values and expertise. The opportunity to lead a dedicated team, leveraging experience in developing and implementing robust vulnerability assessment programs and driving automation initiatives to enhance efficiency, is of particular interest.
+    - **Result**: It is believed that the skills and passion for securing external vendor ecosystems will enable a significant contribution to Citi's mission of safeguarding its assets and maintaining the trust of its clients.
+
+- **9. How do you envision leveraging automation to improve the Vendor Vulnerability Assessments program at Citi?**
+    - **Situation**: In the experience, manual processes in vulnerability assessments can introduce inefficiencies and potential human error, especially in complex environments with numerous vendors.
+    - **Task**: A future where the Vendor Vulnerability Assessments program is significantly more efficient and effective through the strategic application of automation is envisioned.
+    - **Action**: It would start by identifying repetitive tasks in the assessment lifecycle, such as initial data gathering from vendors, scheduling assessments, report generation, and tracking remediation efforts. Then, exploring integrating existing tools, such as vulnerability scanners and GRC platforms, to automate these steps, potentially leveraging scripting for custom integrations, such as with collaboration tools like Atlassian. The focus would be on creating a seamless workflow that reduces manual intervention, provides real-time visibility into the assessment status, and automates communication with vendors and internal stakeholders.
+    - **Result**: The expected outcome would be a more streamlined and scalable program, reducing the time and resources spent on routine tasks, increasing the accuracy of the data, and allowing the team to focus on more complex analysis and strategic initiatives, ultimately enhancing Citi's overall security posture.
