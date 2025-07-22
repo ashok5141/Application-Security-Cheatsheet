@@ -229,3 +229,9 @@ Good luck Ashok! You have a strong foundation — focus on stakeholder scenarios
 - **Can you explain what a vulnerability assessment is and how it differs from a penetration test?**
     - A vulnerability assessment is a systematic process of identifying and evaluating vulnerabilities in a system. It typically involves automated scanning tools and manual analysis to detect potential security issues. The primary goal is to provide a comprehensive list of vulnerabilities and recommendations for remediation.
     - A penetration test, on the other hand, goes a step further by actively attempting to exploit identified vulnerabilities to determine their real-world impact. Penetration testing simulates an attacker’s actions to assess the effectiveness of security measures and identify weaknesses that may not be apparent in a vulnerability assessment. While vulnerability assessments focus on breadth, penetration tests focus on depth.
+
+- **How do you stay updated with the latest vulnerabilities and threats?**
+    - Subscribing to Security Bulletins: Receiving updates from vendors, security organizations, and government agencies.
+    - Participating in Security Communities: Engaging with online forums, security conferences, and professional networks.
+    - Using Threat Intelligence Feeds: Leveraging commercial or open-source threat intelligence services.
+    - Continuous Learning: Taking courses, certifications, and attending webinars to stay informed about the latest trends and technologies.
