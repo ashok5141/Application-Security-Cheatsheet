@@ -60,6 +60,10 @@
 
   * Vendor Tiering (Critical/Non-critical)
   * Reviewing SOC 2, SIG, CAIQ, and pentest reports
+    * SOC2 - System and Organization Controls 2. This is a type of audit report focusing on a service organization's controls related to the Trust Services Criteria (security, availability, processing integrity, confidentiality, and privacy). 
+    * SIG - Standardized Information Gathering. This refers to a comprehensive set of questions used to assess the cybersecurity, IT, and data privacy risks of third-party service providers and vendors.
+    * CAIQ - Consensus Assessments Initiative Questionnaire. This is a questionnaire developed by the Cloud Security Alliance to help organizations document and assess the security controls of cloud providers.
+    * Pentest - Penetration Testing. This is a simulated cyberattack on a system, network, or application to identify vulnerabilities that could be exploited by malicious actors. It's a security exercise where ethical hackers attempt to find and exploit weaknesses in a computer system. 
   * Involving legal, procurement, and security in vendor security
 
 ✅ **Metrics:** Can you walk through this lifecycle verbally with confidence?
@@ -250,3 +254,91 @@ Good luck Ashok! You have a strong foundation — focus on stakeholder scenarios
     - **Task**: A future where the Vendor Vulnerability Assessments program is significantly more efficient and effective through the strategic application of automation is envisioned.
     - **Action**: It would start by identifying repetitive tasks in the assessment lifecycle, such as initial data gathering from vendors, scheduling assessments, report generation, and tracking remediation efforts. Then, exploring integrating existing tools, such as vulnerability scanners and GRC platforms, to automate these steps, potentially leveraging scripting for custom integrations, such as with collaboration tools like Atlassian. The focus would be on creating a seamless workflow that reduces manual intervention, provides real-time visibility into the assessment status, and automates communication with vendors and internal stakeholders.
     - **Result**: The expected outcome would be a more streamlined and scalable program, reducing the time and resources spent on routine tasks, increasing the accuracy of the data, and allowing the team to focus on more complex analysis and strategic initiatives, ultimately enhancing Citi's overall security posture.
+
+
+
+
+# Key Terms and Concepts from the Job Description
+
+
+### 1. Third-party Penetration Testing Vendors
+
+* **What it is:** These are external cybersecurity firms hired by Citi to simulate cyberattacks on its systems, applications, and networks. They are independent specialists, not Citi employees.
+* **How it works:** Citi contracts with these vendors. Their ethical hackers use various tools and techniques to find security vulnerabilities, with the goal of helping Citi fix them before malicious attackers can exploit them.
+* **Example:** Citi hires a firm like **NCC Group** to conduct a penetration test on a new online banking application. The vendor will perform checks on the web application, network, or mobile app to identify weaknesses.
+
+---
+
+### 2. Citi's Requirements
+
+* **What it is:** These are the specific rules, standards, and policies that Citi mandates for any security activity, ensuring all assessments meet the company's internal security posture and regulatory obligations.
+* **How it works:** These requirements cover key aspects of the testing process, including:
+    * **Scope Definition:** What will be tested (e.g., specific URLs, IP ranges).
+    * **Methodology:** The specific testing approaches and tools the vendor must use (e.g., OWASP Top 10 focus, PTES methodology).
+    * **Reporting Standards:** The required format, content, and detail for the final report, including vulnerability severity ratings (e.g., CVSS scores).
+    * **Legal & Compliance:** Adherence to data privacy and financial industry regulations.
+* **Example:** A requirement might state: "All web application penetration tests must follow the OWASP Testing Guide v4 principles and provide a final report with vulnerabilities ranked by CVSSv3.1 score, submitted within 2 weeks."
+
+---
+
+### 3. The Central Liaison
+
+* **What it is:** As the "External Vendor Vulnerability Assessments Lead," you are the primary point of contact and facilitator between internal Citi departments (the "businesses") and external penetration testing vendors. Your role is to be the communication bridge.
+* **How it works:**
+    * **Translating Needs:** You translate business needs into technical scopes for vendors and simplify complex technical findings into business risks for internal teams.
+    * **Information Flow:** You ensure all necessary information (access, documentation) flows from Citi's internal teams to the vendor, and all vendor deliverables (reports, updates) flow back to Citi.
+    * **Problem Resolution:** You mediate any issues that arise during testing.
+* **Example:** A new mobile banking feature needs a penetration test. You would meet with the **Mobile App Development Team (Citi Business)** to get details, then engage a **Third-Party Vendor** with a defined scope. If the vendor has a question, they contact you, and you relay the message to the development team to get the answer.
+
+---
+
+### 4. Orchestrating Penetration Testing
+
+* **What it is:** This phrase describes the core objective of the role: to manage the entire penetration testing process, ensuring every test is conducted according to Citi's standards and delivers high-quality, actionable results.
+* **How it works:** This is a continuous cycle of:
+    * **Planning:** Defining what needs to be tested and when.
+    * **Vendor Engagement:** Selecting the right vendor for the job.
+    * **Monitoring & Oversight:** Actively tracking the test's progress and ensuring the vendor follows the plan.
+    * **Quality Control:** Verifying that the final report is accurate, comprehensive, and meets all of Citi's reporting standards.
+* **Example:** Before an application update goes live, you (the Lead) ensure the **Application Owner (Internal Client)** provides all necessary documentation, the **Third-Party Vendor** uses approved testing methods, and the final report is delivered on time with all required details.
+
+---
+
+### 5. Vulnerability Disclosure & Automation
+
+This section covers a second major responsibility, focusing on managing vulnerabilities reported by independent security researchers and using automation to improve the process.
+
+* **Vulnerability Disclosure (VD) Vendors:** These are platforms (like **HackerOne** or **Bugcrowd**) that facilitate the secure reporting of vulnerabilities by independent researchers. You work with them to set up and manage these programs.
+* **Onboard Applications:** This means integrating a specific Citi application into the VD program by defining its scope and rules for researchers.
+* **Triage:** The initial process of evaluating and prioritizing newly submitted vulnerability reports. You'll reproduce the vulnerability, confirm its existence, and assess its severity.
+* **Report:** Documenting confirmed vulnerabilities in an internal tracking system (like Jira or RSA Archer) and assigning them to the relevant teams for remediation.
+* **Research:** Deep diving into the technical details of a reported vulnerability to understand its full impact and how similar issues might arise.
+* **Drive Root Cause Analysis (RCA):** Leading the effort to determine the fundamental reason a vulnerability occurred, preventing similar issues from happening in the future.
+* **Vulnerabilities identified by External Researchers:** Security flaws found and reported by independent cybersecurity professionals, often through bug bounty programs.
+* **Developing automation with collaboration software:** Creating scripts or tools (e.g., in Python) that automate tasks and integrate with communication platforms like **Microsoft Teams** or **Slack**, making workflows more efficient.
+
+---
+
+### Teams Involved in the Orchestration Paragraph
+
+The paragraph you provided mentions four distinct teams and their roles:
+
+1.  **Internal Clients (Citi Businesses / Application Owners)**
+    * **What they do:** They own and are responsible for specific Citi applications, systems, or business processes. They are the "customers" of the security assessment services.
+    * **How the Lead interacts:** The Lead coordinates with them to define the scope of assessments, ensures they provide necessary information for testing, and works with them to fix vulnerabilities.
+    * **Example:** The **"Retail Banking Division"** is an internal client. You work with them to get a new mobile app feature tested and communicate the results back to them.
+
+2.  **Third-party Penetration Testing Vendors**
+    * **What they do:** External firms hired by Citi to conduct formal penetration tests.
+    * **How the Lead interacts:** The Lead coordinates with them to ensure testing meets Citi's requirements, provides them with the scope and technical details, and manages their engagement.
+    * **Example:** You hire **PenTestPro Inc.** to test a new payment gateway, providing them with the scope and test accounts.
+
+3.  **Vulnerability Disclosure Vendors**
+    * **What they do:** Platforms that facilitate the secure reporting of vulnerabilities by independent researchers.
+    * **How the Lead interacts:** The Lead uses their platform to onboard applications, receive reports, and manage the flow of information from researchers.
+    * **Example:** You use **BugBountyCorp.io**'s platform to set up a bug bounty program for a new customer portal.
+
+4.  **External Researchers**
+    * **What they do:** Independent ethical hackers who proactively find and report vulnerabilities in organizations' systems.
+    * **How the Lead interacts:** The Lead interacts with them indirectly through the VD vendor's platform to triage their reports, ask for clarifications, and manage rewards.
+    * **Example:** A freelance researcher named "CyberNinja" reports a bug in the mobile app. You receive the report and communicate with CyberNinja via the platform to confirm the details.
