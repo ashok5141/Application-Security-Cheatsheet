@@ -68,6 +68,39 @@ EXAMPLE JOB Description Here
 - Why are you interested in the role of Security Engineer II
 
 ##### Citi - External Vendor Vulnerability Assessments Lead
+<details>
+<summary>Citi - External Vendor Vulnerability Assessments Lead</summary>
+External Vendor Vulnerability Assessments Lead
+Job Req ID 25877880 Location(s) Irving, Texas Job Type On-Site/Resident Job Category Technology
+Apply Now
+Save Job
+Overview
+
+This role will provide a unique and rewarding experience in the world of information security and how penetration testing engagements are carried out. Our team of world class, talented people who are passionate about security, put their customer service skills to the test every day on a global scale. At Citi, you will be exposed to all sorts of technologies on an enterprise-scale, so hunger for knowledge and research as to how things work is greatly appreciated and rewarded.
+
+The primary focus of this role is coordinating and interfacing directly with our internal clients, third-party penetration testing vendors to ensure the penetration testing occur as per expectations meeting Citi's requirements, methodology etc. Another key responsibility would be to work with Vulnerability Disclosure vendors to help onboard applications, triage, report, research and drive Root Cause analysis for vulnerabilities identified by external Researchers. Additionally, developing automation with collaboration software would be an additional plus.
+
+Core Responsibilities:
+
+Be the central liaison between Citi businesses and the external vendor testing team, acting as a collaborator to provide updates to both businesses and the third-party vendors as it relates to the penetration test.
+Onboard applications, Triage, Test, Report and perform Root Cause Analysis for vulnerabilities identified by external researchers as part of the Vulnerability Disclosure Program for Citi
+Develop automation to integrate with collaboration tools such as Atlassian, GRC etc.
+Act as an application security subject matter expert to assist both businesses and ethical hack vendors during vulnerability discussions.
+Focus on and drive quality as it relates to the information submitted by the businesses who are requesting VA services and ensuring that the provided information is accurate and complete.
+Focus on maintaining a high level of operational oversight with all vendors and ongoing VA activities in order to ensure that engagements are progressing forward with the right level of attention.
+Have strong communication skills in order to effectively set expectations for our internal clients and ensure that they have a clear understanding of what their responsibility is in this process and what may be pending resolutions.
+Have strong technical writing and presentation skills to articulate the vulnerability assessment process end-to-end to any audience.
+Have strong reporting and research skills to create and execute reports that highlight trends and potential opportunities for enhanced oversight activities.
+Contribute to the review of internal processes and activities and assist in identifying potential opportunities for improvement and automation.
+Education:
+
+Bachelors in computer science or related university degrees
+Security Certifications: GWAPT, CEH Etc
+An ideal candidate will have the ability to solve problems, understand internal client requests as they pertain to vulnerability assessments, and provide accurate and concise information to ensure responsibilities are clear and in-line with our standards. This position requires a bachelor’s degree with a minimum of 3 years of experience in penetration testing. Additional experience in working knowledge of GRC tools such as RSA Archer or creating documents containing technical information related to the application for the requested VA service is a plus.
+</details>
+<details>
+<summary> Citi - Questions </summary>
+    
 - Roles and Responsibilities (Web, DevSecOps, Mobile Security)
 - How do you start the vulnerability assessment process (What to be tested and authorised and unauthorised, with tools Burp Suite)
 - How to mitigate time for requirements of the penetration testing process (Taking all the requirements in the cheat sheet)
@@ -88,9 +121,76 @@ EXAMPLE JOB Description Here
 -  What is Symmetric and Asymmetric encryption (Is symmetric password is vulnerable based on the length today's computing power we can decrypt the password)
 -  What is Hashing, where you can use (MD5 hash is vulnerable to cracking using crackstation, Cyberchef, Mitigation is go for the Asymmetric password encryption and Salting password techniques)
 -  What is LFI, RFI (Upload the PHP file, check the basic commands like id, whoami commands, then go for uploading the file, reverse shell to working reverse shell)
--  [**Remaining**]
+-  Explain the process of LFI (Linux box exploit login with dummy credentials, brute-force through SQL injections, upload the file in the avatar page check the basic commands if it's working, then go and upload the PHP reverse shell)
+-  If there is an XSS on the production because of the onelibrary, it's happening we can't remove the library because it has a lot of dependencies change the library due immediate sprint cycle update feature. How do you provide the mitigation (Input validation and WAF firewall virtual patching)
+-  If there is a vulnerability, and how you'll provide mitigation to the client how you will convice the client (First sit with the developer learn more then go for the client, First thing I'll provide the correct solution without providing all the possibilities, requesting for the some time from the client then come to developer then find the solution meet the client)
+-  What is Java deserialization? What are the mitigations ? (Said input validation and output validation)
+-  What is rate limiting (OTP, Authenticator app)
+-  How do you protect the website from CSRF (input validations, CORS, Same-site cookies)
+-  How do you test the business-related vulnerability testing (Said IDOR but incorrect, Correct it is backing checking the transaction before initiating transactions, it under the available balance, then the transaction is successful or shows insufficient funds)
+-  In OSCP certification preparation, what are you doing correctly(Done with Windows and Linux PrivEsc)
+-  How will you use the Burp Suite tool for web application testing? (Intruder, Repeter)
+-  What is the tool for automation for SQL injection (SQLMap)
+-  In mobile application pen test, what tools did you use, SSL pinning (Drozer, MobSF, ADB Shell, Application certificate for Android applications)
+-  Have you done the Metasploit exploitation in the steps (msfconsole -> search info -> use info -> set the target info)
+-  How you start the penetration testing phases (Recon, Vulnerability Assessment, Exploitation, PrivEsc, Post-Exploitation, Reporting)
+-  Have done the threat modelling, are aware of the STRIDE (Used Microsoft Threat Modelling tool)
+-  If there is file upload functionality, how will you test
+-  If there is a file upload functionality, it's accepting only MS Word files. (Uploading into the server make the access from the URL leads LFI, RFI)
+-  Mitigations file upload functionality (Change the name of the file, Input validation)
+-  What are the resources you follow for explanation and to update yourself in cybersecurity (NVD Database, GitHub, Hacker News)
+-  If there is a vulnerability happening multiple times, what are the steps you follow (Check root cause analysis in code)
+-  Have automated anything in your job (Integrated Sonarqube, which generates more false positive vulnerabilities, makes automation it'll automatically creates tickets in the Jira dashboards, Python automation for scripting for subdomain enumeration)
 
+</details>
 
+##### University of Akron - Cyber Security Analyst
+<details>
+<summary> University of Akron- Cyber Security Analyst </summary>
+Cyber Security Analyst
+University of Akron
+posted 3 months ago
+Full-time • Entry Level
+Akron, OH
+About the position
+Provide support for data and information security technology at the University. Collaborate with relevant constituents to increase the security, reliability, and resiliency of the data and information assets of the University. Assist with the development and implementation of policies, procedures, standards, and guidelines to ensure the security of the University technology environments. Advocate the use of emerging information security best practices and technologies.
+
+Responsibilities
+Handle day-to-day security operations activities including vulnerability scanning, security monitoring and alerting, and incident handling.
+Work with system owners to ensure patches are kept up to date or implemented in a timely manner when critical vulnerabilities are identified.
+Assist with incident handling and response.
+Design and implement security monitoring solutions and make changes when needed to improve visibility and relevancy of alerts.
+Work with the University community to foster a culture of shared security responsibility.
+Assist with the development and administration of a University-wide Technology Security plan and program.
+Develop priorities and requirements for Information Security in academic and administrative departments.
+Provide assistance with the design and implementation of the Technology disaster recovery plan.
+Assist with regular exercises to test and refine this disaster recovery plan.
+Requirements
+Relevant bachelor's degree.
+Current security certification, such as CISSP, CISA, Security+, or GIAC preferred.
+Minimum of 2 years of experience in Security, System or Network administration.
+Technical understanding of a broad range of security concepts including application security, operating system security, network security, and cryptography.
+Extensive knowledge of application, infrastructure, and networking operations.
+Working knowledge of requirements for organizational compliance with laws, regulations, and standards such as PCI-DSS, HIPAA, FISMA, GLBA, FERPA, and DMCA preferred.
+Knowledge of common attack methodologies, malware, and incident response.
+Experience with vulnerability management tools and open source penetration testing tools preferred.
+Experience with Workday security preferred.
+Experience with cloud infrastructure/security services and an EDR product preferred.
+</details>
+
+<details>
+<summary> University of Akron - Questions </summary>
+    
+- Difference between Vulnerability, Threat and Risk in the context of cybersecurity
+- Describe the Steps to respond to a security incident
+- In cybersecurity, what tools are you familiar with
+- Difference between Symmetric and Asymmetric encryption
+- Imagine your potential security vulnerability in the organisation and how you'll mitigate the vulnerability
+- How do you approach analysing security logs
+- What are the key cybersecurity standards followed by higher education institutions
+- What is Workday's security model, and how is it different from the normal applications
+- Imagine you're asked to audit who has access to sensitive business processes on Workday, and how you'll approach it. 
+</details>
 
 ##### Goldman Sachs - Global Cyber Defense & Intelligence – Application Security Engineer – Bug Bounty – Associate
 
@@ -170,6 +270,9 @@ Note: Once hired into the role, participation in Bug Bounty programs for monetar
 #TechRiskCybersecurity
 </details>
 
+<details>
+<summary> Goldman Sachs - Questions </summary>
+    
 - Subdomain takeover (It's related to DNS-related issues)
 - What kind of DNS records (A, AAAA, Mail-Exchange, nslookup, dig tool)
 - Assume a Subdomain called abc.com, A record has taken over (Identified the A record, then identified the IP address then exploited)
@@ -184,6 +287,8 @@ Note: Once hired into the role, participation in Bug Bounty programs for monetar
 - You're an application owner with different teams, 3 finding CVSS score 10 and same vulnerability, teams bug bounty, pen test, vulnerability assessment team which one you prioritise first (First check all the things, is there any public exploits, internal team i for the internal patching first, i go for the bug bounty)
 - Is there any separate team (run bug bounty to the external team, our team validate work with the internal teams)
 - When you give what to test a new feature developed, which way is tested: only the new feature or entire application or a business feature (It's a layered approach, everything internet-facing is in scope. Internally, new features developed are tested with incremental testing, bug bounty full scope testing)
-- In the bug bounty team, how does the test application Black, grey and white box testing (Bug bounty go for a black box approach, pen test covers every single on their if they did not find anything report, Incentiwise find exploitable, keep testing, find something report it, in the organisation entrily black testing) 
+- In the bug bounty team, how does the test application Black, grey and white box testing (Bug bounty go for a black box approach, pen test covers every single on their if they did not find anything report, Incentiwise find exploitable, keep testing, find something report it, in the organisation entrily black testing)
+
+</details>
 
 
