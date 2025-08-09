@@ -111,7 +111,115 @@
 **Rapid example answer:**
 - *Q: How do you balance security telemetry with user privacy?*  
   **A:** “You can collect aggregate, anonymized logs—like failed login counts—rather than raw IPs or usernames. Use differential privacy or hashing/pseudonymization. Store detailed IDs only transiently, then strip or anonymize them once security thresholds are computed.”
+```bash
 
+# Privacy & Security Alignment (17:15 – 19:00)
+
+## Goal
+Learn privacy engineering fundamentals and align security measures without over-collecting user data.
+
+---
+
+## Tasks
+
+1. **Read NIST Privacy Engineering Overview**  
+   - [NIST Privacy Engineering Program Overview](https://www.nist.gov/privacy-engineering)  
+   - Key Objectives:  
+     - **Predictability** – Users should understand how their data is collected/used.  
+     - **Manageability** – Users should have control over their data (e.g., consent, deletion).  
+     - **Disassociability** – Minimize linking data to specific individuals unless necessary.  
+
+2. **Quickly Scan a GDPR Compliance Checklist**  
+   - [ICO GDPR Checklist](https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/checklists/)  
+   - Focus Principles:  
+     - **Data Minimization** – Collect only what’s strictly necessary.  
+     - **Purpose Limitation** – Use data only for stated purposes.  
+     - **Lawful Basis** – Consent, contract, legitimate interest, etc.  
+     - **Storage Limitation** – Don’t keep data longer than necessary.  
+     - **Integrity & Confidentiality** – Apply security measures to protect data.
+
+3. **Prepare Two Examples**  
+   - **Logging for Security Without Infringing Privacy**  
+     - ❌ Bad:  
+       ```
+       2025-08-09 17:22 - Failed login - user: johndoe@example.com - IP: 192.0.2.44
+       ```
+     - ✅ Better (pseudonymized IDs + masked IP):  
+       ```
+       2025-08-09 17:22 - Failed login - userID_hash: 1f3870be274f6c49b3e31a0c6728957f - IP: 192.0.2.xxx
+       ```
+       - Store salted hashes for user IDs.  
+       - Mask IP addresses to avoid precise tracking.
+
+   - **Telemetry Balancing Diagnostics & Privacy**  
+     - ❌ Bad: Sending full URLs with usernames to telemetry service.  
+     - ✅ Better: Send aggregate metrics without personal identifiers:  
+       ```json
+       { "feature": "search", "avg_response_time_ms": 120, "usage_count": 4521 }
+       ```
+       - Use **differential privacy** or statistical noise to protect individuals.
+
+---
+
+## Key Concepts
+
+### Data Minimization
+- **Definition**: Collect/retain the smallest amount of personal data needed.
+- **Example**: Store age range instead of full birth date.
+
+### Privacy by Design
+- Embed privacy into system architecture from the start.
+- Conduct Privacy Impact Assessments (PIAs).
+- Default to least-privilege access.
+
+### Pseudonymization vs Anonymization
+- **Pseudonymization**: Replace identifiers with reversible tokens (key stored separately).
+- **Anonymization**: Irreversibly remove identifiers to prevent re-identification.
+
+---
+
+## Privacy Review Structure
+
+1. **Data Mapping**
+   - Inventory personal data: source, purpose, storage, access controls.
+
+2. **Purpose & Lawful Basis**
+   - Map each data element to a purpose and legal basis.
+
+3. **Retention & Deletion**
+   - Define retention periods and automate deletion/anonymization.
+
+4. **Security Alignment**
+   - Ensure logging/monitoring supports threat detection without excess data.
+
+5. **Consent & Transparency**
+   - Maintain clear privacy notices and user rights mechanisms.
+
+---
+
+## Completion Criteria
+
+- Explain **data minimization** and **privacy design**.  
+- Outline a **privacy review structure** (data mapping, retention, consent).
+
+---
+
+## Rapid Example Answer
+
+**Q:** How do you balance security telemetry with user privacy?  
+**A:** You can collect aggregate, anonymized logs—like failed login counts—rather than raw IPs or usernames. Use differential privacy or hashing/pseudonymization. Store detailed IDs only transiently, then strip or anonymize them once security thresholds are computed.
+
+---
+
+## References
+
+- [NIST Privacy Engineering Program Overview](https://www.nist.gov/privacy-engineering)  
+- [NIST Privacy Framework v1.0 PDF](https://www.nist.gov/system/files/documents/2020/01/16/NIST%20Privacy%20Framework%20V1.0.pdf)  
+- [ICO GDPR Checklist](https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/checklists/)  
+- [NIST SP 800-122: Guide to Protecting PII](https://csrc.nist.gov/publications/detail/sp/800-122/final)  
+- [Apple Differential Privacy Overview](https://www.apple.com/privacy/docs/Differential_Privacy_Overview.pdf)
+
+```
 ---
 
 ### 19:30 – 21:00 — Adversarial Testing
