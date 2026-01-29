@@ -10,6 +10,55 @@
 9. [Threat Modeling](https://interview.rajanagori.in/threatmodel/)
 10. [AppSec Q/A](https://interview.rajanagori.in/interview/)
 
+### Must check Topics
+<details>
+<summary> For any interview </summary>
+    
+[1] Core Security & Systems Fundamentals
+• Networking basics (TCP, UDP, HTTP, TLS, DNS)
+ • Operating system internals and permission models
+ • Processes, threads, and privilege boundaries
+ • Cryptography fundamentals (hashing, symmetric, asymmetric, signatures)
+ • Threat modeling and trust boundaries
+ • Secure design principles (least privilege, defense in depth)
+ • Core security models (CIA triad, STRIDE, kill chains)
+[2] Web & API Security (where most real bugs live)
+• OWASP-style risks (XSS, SQLi, CSRF, SSRF, IDOR)
+ • Input validation vs output encoding
+ • Sessions, cookies, and secure flags
+ • API auth patterns (API keys, OAuth2, JWT)
+ • Broken access control and object-level authorization
+ • Rate limiting, quotas, and abuse prevention
+ • File uploads and deserialization risks
+[3] Identity, Access & Secrets (the real perimeter)
+• Authentication factors and strong MFA design
+ • Password storage and credential hygiene
+ • SSO concepts and common identity flows
+ • RBAC vs ABAC models
+ • Service accounts and machine-to-machine auth
+ • Least privilege, JIT, and time-bound access
+ • Secrets management, vaults, and key rotation
+ • Impersonation and session hijacking risks
+[4] Cloud & Infrastructure Security
+• Network segmentation, VPC design, private connectivity
+ • Firewalls, security groups, and WAF basics
+ • Storage security for buckets and shared file systems
+ • Container and Kubernetes security fundamentals
+ • Infrastructure as Code and policy as code
+ • Vulnerability management and risk-based patching
+ • Endpoint hardening and EDR concepts
+ • Secure configuration baselines
+[5] Detection, Response & Secure Delivery
+• Key log sources and useful telemetry
+ • Detection engineering fundamentals
+ • Incident response lifecycle
+ • Alert triage, severity, and escalation
+ • Forensics basics and evidence handling
+ • Secure coding and security-focused code reviews
+ • CI security testing (SAST, DAST, dependency scanning)
+ • Automation to reduce manual security toil
+</details>
+
 
 # Interview Question
 <details>
@@ -18,6 +67,9 @@ EXAMPLE JOB Description Here
 </details>
 
 ##### RSM Senior Associate - Penetration Tester
+<details>
+<summary>RSM - Question</summary>
+    
 - Active Directory Certificate Services (AD CS) Penetration Testing
 - PetitPotam AD penetration testing scenario, enterprise level
 - Blind SQL injection: How to retrieve the database information using Blind SQL injection
@@ -26,8 +78,12 @@ EXAMPLE JOB Description Here
 - Reflected XSS, DOM Difference
 - Browser's Same Origin Policy, CORS difference
 - SQL Injection code samples, images
+</details>
 
 ##### TCS
+<details>
+<summary>TCS - Question</summary>
+    
 - How to start the Network, Application Penetration Testing (1 st round)
 - Second-order SQL Injection
 - Types of XSS
@@ -47,7 +103,9 @@ EXAMPLE JOB Description Here
     - Handling the client and maintaining a relationship with the client
     - Have done the citrix applications penetration testing
     - Have done the WordPress application penetration testing (Plugin exploits using wpscan, admin URL, User posts in WordPress)
+</details>
 
+    
 > Trintech (Application Security Engineer)
 - 
 
@@ -56,6 +114,9 @@ EXAMPLE JOB Description Here
 
  
 ##### Credit One Bank
+<details>
+<summary>Credit One Bank - Question</summary>
+    
 - CIA Triad
 - How to find the integrity of the file
 - Difference between Symmetric and Asymmetric
@@ -66,7 +127,8 @@ EXAMPLE JOB Description Here
 - WAF, AWS WAF, What are WAFs used AWS WAF and Fortinet Firewall
 - Mitre ATT&CK TTP's 
 - Why are you interested in the role of Security Engineer II
-
+</details>
+    
 ##### Citi - External Vendor Vulnerability Assessments Lead
 <details>
 <summary>Citi - External Vendor Vulnerability Assessments Lead</summary>
@@ -291,4 +353,14 @@ Note: Once hired into the role, participation in Bug Bounty programs for monetar
 
 </details>
 
-
+##### AT&T & TechM
+<details>
+<summary>  AT&T & TechM - Questions </summary>
+    
+- 1. Why put the certificate OSCP
+- 2. ⁠How enter into At & t co operate network if enter as guest (Started with guest, responded why don't you use powershell)
+- 3. ⁠what if the example.com has the ssrf, white listed ips allowing only allows the list
+- 4. ⁠In black box approch how you will test the example.com
+- 5. ⁠how you increase the severity of reflected XSS
+- 6. ⁠Active Directory Golden and silver ticket explain this
+</details>
