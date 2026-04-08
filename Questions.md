@@ -14,49 +14,49 @@
 <details>
 <summary> For any interview </summary>
     
-[1] Core Security & Systems Fundamentals
-• Networking basics (TCP, UDP, HTTP, TLS, DNS)
- • Operating system internals and permission models
- • Processes, threads, and privilege boundaries
- • Cryptography fundamentals (hashing, symmetric, asymmetric, signatures)
- • Threat modeling and trust boundaries
- • Secure design principles (least privilege, defense in depth)
- • Core security models (CIA triad, STRIDE, kill chains)
-[2] Web & API Security (where most real bugs live)
-• OWASP-style risks (XSS, SQLi, CSRF, SSRF, IDOR)
- • Input validation vs output encoding
- • Sessions, cookies, and secure flags
- • API auth patterns (API keys, OAuth2, JWT)
- • Broken access control and object-level authorization
- • Rate limiting, quotas, and abuse prevention
- • File uploads and deserialization risks
-[3] Identity, Access & Secrets (the real perimeter)
-• Authentication factors and strong MFA design
- • Password storage and credential hygiene
- • SSO concepts and common identity flows
- • RBAC vs ABAC models
- • Service accounts and machine-to-machine auth
- • Least privilege, JIT, and time-bound access
- • Secrets management, vaults, and key rotation
- • Impersonation and session hijacking risks
-[4] Cloud & Infrastructure Security
-• Network segmentation, VPC design, private connectivity
- • Firewalls, security groups, and WAF basics
- • Storage security for buckets and shared file systems
- • Container and Kubernetes security fundamentals
- • Infrastructure as Code and policy as code
- • Vulnerability management and risk-based patching
- • Endpoint hardening and EDR concepts
- • Secure configuration baselines
-[5] Detection, Response & Secure Delivery
-• Key log sources and useful telemetry
- • Detection engineering fundamentals
- • Incident response lifecycle
- • Alert triage, severity, and escalation
- • Forensics basics and evidence handling
- • Secure coding and security-focused code reviews
- • CI security testing (SAST, DAST, dependency scanning)
- • Automation to reduce manual security toil
+- [1] Core Security & Systems Fundamentals
+    - Networking basics (TCP, UDP, HTTP, TLS, DNS)
+    - Operating system internals and permission models
+    - Processes, threads, and privilege boundaries
+    - Cryptography fundamentals (hashing, symmetric, asymmetric, signatures)
+    - Threat modeling and trust boundaries
+    - Secure design principles (least privilege, defense in depth)
+    - Core security models (CIA triad, STRIDE, kill chains)
+- [2] Web & API Security (where most real bugs live)
+    - OWASP-style risks (XSS, SQLi, CSRF, SSRF, IDOR)
+    - Input validation vs output encoding
+    - Sessions, cookies, and secure flags
+    - API auth patterns (API keys, OAuth2, JWT)
+    - Broken access control and object-level authorization
+    - Rate limiting, quotas, and abuse prevention
+    - File uploads and deserialization risks
+- [3] Identity, Access & Secrets (the real perimeter)
+    - Authentication factors and strong MFA design
+    - Password storage and credential hygiene
+    - SSO concepts and common identity flows
+    - RBAC vs ABAC models
+    - Service accounts and machine-to-machine auth
+    - Least privilege, JIT, and time-bound access
+    - Secrets management, vaults, and key rotation
+    - Impersonation and session hijacking risks
+- [4] Cloud & Infrastructure Security
+    - Network segmentation, VPC design, private connectivity
+    - Firewalls, security groups, and WAF basics
+    - Storage security for buckets and shared file systems
+    - Container and Kubernetes security fundamentals
+    - Infrastructure as Code and policy as code
+    - Vulnerability management and risk-based patching
+    - Endpoint hardening and EDR concepts
+    - Secure configuration baselines
+- [5] Detection, Response & Secure Delivery
+    - Key log sources and useful telemetry
+    - Detection engineering fundamentals
+    - Incident response lifecycle
+    - Alert triage, severity, and escalation
+    - Forensics basics and evidence handling
+    - Secure coding and security-focused code reviews
+    - CI security testing (SAST, DAST, dependency scanning)
+    - Automation to reduce manual security tool
 </details>
 
 
