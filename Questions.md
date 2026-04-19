@@ -364,3 +364,55 @@ Note: Once hired into the role, participation in Bug Bounty programs for monetar
 - 5. ⁠how you increase the severity of reflected XSS
 - 6. ⁠Active Directory Golden and silver ticket explain this
 </details>
+
+##### NCDHHS
+<details>
+<summary>  NCDHHS - Senior Penetration Tester </summary>
+    
+- Job Title: Senior Penetration Tester
+- Client: NCDHHS - Privacy and Security Office / State of South Carolina
+- Summary
+    - Seeking a Senior Penetration Tester to conduct authorized network and infrastructure penetration testing to identify, validate, and demonstrate security weaknesses.
+- Responsibilities
+    - Plan and execute internal and external penetration tests for network and infrastructure environments
+    - Perform vulnerability identification, validation, and controlled exploitation
+    - Assess security posture across:
+    - Network devices (firewalls, routers, switches)
+    - On-premise servers and operating systems (Windows, Linux, Unix)
+    - Active Directory and identity infrastructure
+    - Remote access solutions and VPNs
+    - Cloud environments (where applicable)
+    - Simulate advanced threat actor techniques including:
+        - Privilege escalation
+        - Lateral movement
+        - Credential compromise
+        - Persistence mechanisms
+    - Evaluate security configurations and control effectiveness
+    - Conduct testing in accordance with approved Rules of Engagement
+    - Prepare and deliver formal penetration testing reports suitable for executive, audit, and technical audiences
+    - Support remediation validation and follow-up testing as required
+- Required Skills & Experience Skill Area	Details
+    - Experience	7–10 years of hands-on experience in penetration testing or offensive security
+    - Network & Infrastructure Security	Demonstrated expertise in network and infrastructure security testing
+    - Technical Knowledge	Strong understanding of: TCP/IP, DNS, DHCP, VPN, firewalls, IDS/IPS; Windows and Linux system internals; Active Directory attack paths and defense
+    - Penetration Testing Tools	Advanced proficiency with tools such as: Nmap, Nessus, Metasploit, Burp Suite, BloodHound, NetExec, PingCastle, and analysis tools
+    - Reporting	Experience producing standard penetration testing reports for technical, executive, and audit audiences
+    - Security Frameworks & Standards	Familiarity with: NIST SP 800-53, 800-115, 800-61; MITRE ATT&CK; OWASP Testing Guide
+    - Regulated Environments	Experience working within regulated or high-security environments
+    - Legal & Ethical Compliance	Strong understanding of legal, ethical, and compliance requirements for penetration testing
+</details>
+<details>
+<summary>  NCDHHS - Senior Penetration Tester - Questions </summary>
+    
+- 1: What is your general methodology for conducting internal and external penetration tests and how do you ensure consistency across multiple environments?
+- 2: Explain the difference between a network vulnerability assessment and a penetration test. And how do you differentiate between which approach is appropriate for any given environment?
+- 3: Walk me through your process for discovering and mapping assets in a large, medium, and small decentralized network ?
+- 4: How do you approach external perimeter testing when dealing with many separate entities that each manage their own internet-facing infrastructure?
+- 5: If you're placed inside a county's network with minimal documentation, what is your step-by-step approach to identify trust relationships, segmentation weaknesses, and privilege escalation paths?
+- 6: Describe a time you found a critical vulnerability in a production network. What was the vulnerability? How did you exploit it? And how did you communicate that risk to a non-technical audience?
+- 7: How do you standardize your tooling and reporting without missing unique risks across each environment, knowing there are currently no identified tool sets?
+- 8: How would you simulate a realistic adversary (like a ransomware threat actor) across multiple county networks while ensuring that operations are not disrupted?
+- 9: How would you utilize Splunk to provide any type of additional information or tracking or after-action in your reporting for that ransomware attack?
+- 10: During a penetration test you trip IDS/IPS or generate suspicious logs and are notified. What would your next steps be?
+- 11: Knowing that each county has a different IT maturity level, how would you manage your communication expectations and remediation planning?
+</details>
